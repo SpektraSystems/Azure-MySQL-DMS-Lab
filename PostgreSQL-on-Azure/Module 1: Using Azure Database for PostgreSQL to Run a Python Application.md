@@ -13,18 +13,23 @@ This hands-on lab will step you through the following:
 6.	Login to ubuntu VM.
 7.	Download the app from GitHub: git clone https://github.com/vitorfs/bootcamp.git  - cd bootcamp.
 8.	Change your connection string - vim .env - Paste this in the .env file (change database credentials to yours)
-<copy>DEBUG=True
+```
+DEBUG=True
 SECRET_KEY='mys3cr3tk3y'
 DATABASE_URL='postgres://pgsqluser@postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />P@ssword1@<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />.database.windows.net:5432/bootcamp'
-ALLOWED_HOSTS = "*"</copy>
+ALLOWED_HOSTS = "*"
+```
 9.	Run migration and serve the app
-10.	  Python manage.py migrate
-11.	  Python manage.py runserver 0.0.0.0:8000
-12.	Open browser and go to http://[externalIpAddress]:8000 to interact with the app.
+``
+Python manage.py migrate
+Python manage.py runserver 0.0.0.0:8000
+``
+12.	Open browser and go to **http://[externalIpAddress]:8000** to interact with the app.
 13.	Play around with the app, and demonstrate that it works.
-''
+
+``
 3 pull requests found in 2 sections
-''
+``
 
 # Developing apps with Azure Database for PostgreSQL
 ## Start Lab
@@ -34,11 +39,10 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
 
 ### Sign In to the Azure portal
 
-1.	In the Email, phone, or Skype box, type <inject key="AzureAdUserEmail" /> and click Next
-2.	In the Password box, type <inject key="AzureAdUserPassword" /> and click Sign in
+1.	In the Email, phone, or Skype box, type <inject key="AzureAdUserEmail" /> and click **Next**
+2.	In the Password box, type <inject key="AzureAdUserPassword" /> and click **Sign in**
 3.	In the Stay signed in? pop-up window, click No
-4.	In the Welcome to Microsoft Azure pop-up window, click Maybe Later
-Create a storage account and Initialize the Azure CLI
+4.	In the Welcome to Microsoft Azure pop-up window, click Maybe Later. Create a storage account and Initialize the Azure CLI
 5.	To launch the Azure Cloud Shell, click the Cloud Shell button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.
 6.	Once the shell launches, you will see "Welcome to Azure Cloud Shell". Click on the Bash (Linux) option at the bottom 
 7.	In the "You have no storage mounted" tab, click Show Advanced Settings
@@ -46,7 +50,7 @@ Create a storage account and Initialize the Azure CLI
 9.	Click Create Storage
 10.	Once the storage gets created, your Cloud Shell will initialize and very shortly be ready to use
 
-**Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
+   > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 Create an Azure PostGreSQL Database Server**
 
