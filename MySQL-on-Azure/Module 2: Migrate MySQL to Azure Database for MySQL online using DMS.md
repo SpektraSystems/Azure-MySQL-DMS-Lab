@@ -11,14 +11,6 @@ In this tutorial, you learn how to:
 ## Migrate the sample schema
 
 To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database. To extract schema, you can use mysqldump with - - no-data parameter.
-Assuming you have MySQL employees sample database in the on-premise system, the command to do schema migration using mysqldump is:
-```
-mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
-```
-To import schema to Azure Database for MySQL target, run the following command:
-```
-mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
-```
 
 If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
 ```
@@ -46,6 +38,15 @@ If you have trigger in the data (insert or update trigger), it will enforce data
 To disable triggers in target database, use the following command:
 ```
 SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
+```
+
+Assuming you have MySQL employees sample database in the on-premise system, the command to do schema migration using mysqldump is:
+```
+mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
+```
+To import schema to Azure Database for MySQL target, run the following command:
+```
+mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
 ### Register the Microsoft.DataMigration resource provider
