@@ -16,7 +16,7 @@ Follow these steps to create an Azure Database for MySQL server:
 1.	Select the Create a resource button (+) in the upper-left corner of the portal.
 2.	Select Databases > Azure Database for MySQL. You can also type MySQL in the search box to find the service.<br/>
 <img src="images/mysql1.jpg"/><br/>
-3.	Fill out the new server details form with the following information:
+3.	Fill out the new server details form with the following information:<br/>
 <img src="images/mysql2.jpg"/><br/>
 4.	Select Create to provision the server. Provisioning can take up to 20 minutes.
 5.	Select Notifications on the toolbar (the bell icon) to monitor the deployment process.
@@ -28,7 +28,7 @@ By default, the following databases are created under your server: information_s
 The Azure Database for MySQL service creates a firewall at the server level. It prevents external applications and tools from connecting to the server and any databases on the server, unless a firewall rule is created to open the firewall for specific IP addresses.
 1.	After the deployment finishes, locate your server. If necessary, you can search for it. For example, select All Resources from the menu on the left. Then type in the server name, such as the example mydemoserver, to search for your newly created server. Select the server name from the search result list. The Overviewpage for your server opens and provides options for further configuration.
 2.	On the server page, select Connection security.
-3.	Under the Firewall rules heading, select the blank text box in the Rule Name column to begin creating the firewall rule. Enter the precise range of IPs of the clients that will be accesing this server.
+3.	Under the Firewall rules heading, select the blank text box in the Rule Name column to begin creating the firewall rule. Enter the precise range of IPs of the clients that will be accesing this server.<br/>
 <img src="images/mysql3.jpg"/><br/>
 4.	On the upper toolbar of the Connection security page, select Save. Wait until the notification appears stating that the update has finished successfully before you continue.
 ```
@@ -48,9 +48,9 @@ Connect to MySQL by using the mysql command-line tool. There are a number of app
 ## Connect to MySQL by using the mysql command-line tool
 
 Let's first use the mysql command-line tool to illustrate how to connect to the server. You can also use a web browser and Azure Cloud Shell as described here without installing additional software. If you have the mysql utility installed locally, you can connect from there as well.
-1.	Launch Azure Cloud Shell via the terminal icon (>_) on the upper right of the Azure portal
+1.	Launch Azure Cloud Shell via the terminal icon (>_) on the upper right of the Azure portal.<br/>
 <img src="images/mysql4.jpg"/><br/>
-2.	Azure Cloud Shell opens in your browser, where you can type bash shell commands.
+2.	Azure Cloud Shell opens in your browser, where you can type bash shell commands.<br/>
 <img src="images/mysql5.jpg"/><br/>
 3.	At the Cloud Shell prompt, connect to your Azure Database for MySQL server by typing the mysql command line.
 To connect to an Azure Database for MySQL server with the mysql utility, use the following format:
