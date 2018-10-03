@@ -20,10 +20,12 @@ DATABASE_URL='postgres://pgsqluser@postgresql<inject story-id="story://Content-P
 ALLOWED_HOSTS = "*"
 ```
 9.	Run migration and serve the app
+
 ``
 Python manage.py migrate
 Python manage.py runserver 0.0.0.0:8000
 ``
+
 12.	Open browser and go to **http://[externalIpAddress]:8000** to interact with the app.
 13.	Play around with the app, and demonstrate that it works.
 
