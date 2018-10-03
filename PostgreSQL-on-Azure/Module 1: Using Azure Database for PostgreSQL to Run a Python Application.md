@@ -3,7 +3,9 @@
 Azure Database for PostgreSQL is a PostgreSQL database service built on Microsoft's scalable cloud infrastructure for application developers.
 Leverage your existing open-source PostgreSQL skills and tools and scale on-the-fly without downtime to efficiently deliver existing and new applications with reduced operational overhead.
 Built-in features maximize performance, availability, and security. Azure Database for PostgreSQL empowers developers to focus on application innovation instead of database management tasks.
-Scenario Overview
+
+## Scenario Overview
+
 This hands-on lab will step you through the following:
 1.	Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 2.	Create an Azure Database for PostgreSQL instance.
