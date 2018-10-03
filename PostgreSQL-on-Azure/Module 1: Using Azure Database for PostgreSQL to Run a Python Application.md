@@ -13,10 +13,7 @@ This hands-on lab will step you through the following:
 4.	Enable the firewall.
 5.	Create a database for an app written in Python and Django in Azure PostgreSQL database instance.
 6.	Login to ubuntu VM.
-7.	Download the app from GitHub: git clone https://github.com/vitorfs/bootcamp.git  
-``
-cd bootcamp
-``
+7.	Download the app from GitHub: git clone https://github.com/vitorfs/bootcamp.git  - cd bootcamp
 8.	Change your connection string - vim .env - Paste this in the .env file (change database credentials to yours)
 ```
 DEBUG=True
