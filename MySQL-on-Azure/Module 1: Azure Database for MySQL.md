@@ -82,7 +82,7 @@ Before our WordPress website will work we need to populate the database with dat
 * Connection Name: **<copy>bikestoreshop</copy>**
 * Hostname: **<copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.mysql.database.azure.com</copy>**
 * Username: **<copy>mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
-*** Password: **<copy>mysqlAdminPassw0rd!</copy>**
+* Password: **<copy>mysqlAdminPassw0rd!</copy>**
 
 5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
 6.	Click on **Test Connection** to verify that you have configured the connection correctly. If you have issues check that you have provided the all of the details correctly. Once the test connection action succeeds click on **OK**.
