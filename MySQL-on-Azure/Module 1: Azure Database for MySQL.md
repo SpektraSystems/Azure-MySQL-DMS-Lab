@@ -11,7 +11,7 @@ az login
 ```
 2.	When prompted, open a web browser window and open <copy>https://aka.ms/devicelogin </copy> and enter the code shown in the console window 
 3.	Sign in with your Azure Credentials that provided for this lab.
-4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab
+4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
 5.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL:
 ```
 az mysql server create --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --location <inject key="myResourceGroupLocation" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --performance-tier Basic --compute-units 50 --ssl-enforcement Disabled --storage-size 51200
@@ -42,8 +42,8 @@ cd bikeshop
 git config user.name  "holuser"
 git config user.email "<inject key="AzureAdUserEmail" copy="false" />"
 ```
-3.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**
-4.	Using the file menu choose Open File 
+3.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
+4.	Using the file menu choose Open File.
 5.	Open the wp-config.php file at **C:\code\bikeshop\**
 6.	On line 44 replace [Username] with **mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
 7.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
@@ -75,20 +75,20 @@ git push website
 
 Before our WordPress website will work we need to populate the database with data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
 
-1.	Open **MySQL Workbench** .
+1.	Open **MySQL Workbench**.
 2.	Click **OK** and ignore the unsupported operating system warning.
 3.	Click on the **+** icon to add a new **MySQL Connection**.
-4.	Setup the new connection to MySQL using the server name, username, and password
+4.	Setup the new connection to MySQL using the server name, username, and password.
 
-o	Connection Name: <copy>bikestoreshop</copy>
-o	Hostname: <copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.mysql.database.azure.com</copy>
-o	Username: <copy>mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>
-o	Password: <copy>mysqlAdminPassw0rd!</copy>
+*** Connection Name: <copy>bikestoreshop</copy>
+*** Hostname: <copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.mysql.database.azure.com</copy>
+*** Username: <copy>mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>
+*** Password: <copy>mysqlAdminPassw0rd!</copy>
 
 5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
 6.	Click on **Test Connection** to verify that you have configured the connection correctly. If you have issues check that you have provided the all of the details correctly. Once the test connection action succeeds click on **OK**.
 7.	Double click on the connection name to open a session against your MySQL database.
-8.	Choose File > Run SQL Script 
+8.	Choose File > Run SQL Script. 
 9.	Open the sql file from **C:\code\bikeshop\bikeshop.sql** and click the **Run**.
 10.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
 11.	Click the refresh icon to see it listed in the set of availble schema.
@@ -104,16 +104,16 @@ Refer to these documentation articles for more infomation on Pricing Tiers shoul
 There are two options to scale up or scale down the Azure Database for MySQL service, either using the portal or via CLI.
 
 ### Using the Azure Portal
-1.	Open the Azure portal in a web browser <copy>https://portal.azure.com </copy>
-2.	Open All Resources blade
-3.	Click on the MySQL database mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />
-4.	Click Pricing Tier option 
+1.	Open the Azure portal in a web browser <copy>https://portal.azure.com </copy>.
+2.	Open All Resources blade.
+3.	Click on the MySQL database mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.
+4.	Click Pricing Tier option.
 5.	Change the vCore and Storage up or down as need and click OK to save changes.
 
    >Note that the Basic level can only scale to 2 vCores and 1024 GB of storage
 
 ### Using the Azure CLI 2.0
-1.	Using the PowerShell prompt that you have open and connected to the Azure subscription
+1.	Using the PowerShell prompt that you have open and connected to the Azure subscription.
 2.	Using Azure CLI get information about the MySQL databases that you have access to:
 ```
 az mysql server list
@@ -123,7 +123,7 @@ az mysql server list
 ```
 az mysql server update --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --compute-units 100 --set storageMb=71680
 ```
-5.	Run below command to scale down to 1 vCore
+5.	Run below command to scale down to 1 vCore.
 
    >Note that storage cannot be scaled down
    
