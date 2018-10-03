@@ -16,7 +16,8 @@ This hands-on lab will step you through the following:
 ```
 DEBUG=True
 SECRET_KEY='mys3cr3tk3y'
-DATABASE_URL='postgres://pgsqluser@postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />P@ssword1@<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />.database.windows.net:5432/bootcamp'
+DATABASE_URL='postgres://pgsqluser@postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" 
+="false" />P@ssword1@<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />.database.windows.net:5432/bootcamp'
 ALLOWED_HOSTS = "*"
 ```
 9.	Run migration and serve the app
@@ -58,7 +59,7 @@ Create an Azure PostGreSQL Database Server**
 
 11. A server contains a group of databases. You can create an Azure Database for PostgreSQL server using the az postgres server create command. Copy and paste the following into the Azure command line:
 ```
-<copy> az postgres server create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --sku-name GP_Gen4_2 --storage-size 51200
+az postgres server create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --sku-name GP_Gen4_2 --storage-size 51200
 ```
   
      > Note: Be sure to remember your user name and password as you will need to use it later for your connection information.
@@ -66,12 +67,12 @@ Create an Azure PostGreSQL Database Server**
 2.	Hit **Enter**
 3.	Create an Azure PostgreSQL server-level firewall rule with the **az postgres server firewall-rule create** command. A server-level firewall rule allows an external application, such as psql or PgAdmin to connect to your server through the Azure PostgreSQL service firewall.
 ```
-<copy> az postgres server firewall-rule create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --server pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255</copy>
+az postgres server firewall-rule create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --server pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 4.	Hit **Enter**
 5.	Now let's get the connection information for your new PostGreSQL Azure Database Server. To connect to your server, you need to provide host information and access credentials.
 ```
-<copy>az postgres server show --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />
+az postgres server show --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" />
 ```
 6.	Hit **Enter**
 The result is output to the screen in JSON format as shown in the example below. Make a note of the administratorLogin and fullyQualifiedDomainName.
@@ -173,12 +174,12 @@ sudo apt install python3-pip
 4.	We are now ready to install our Bootcamp application that we will use with PostgreSQL. We will need to download a copy from GitHub.
 5.	To connect to GitHub and pull the code for Bootcamp, type the following command and hit **Enter**:
 ```
-git clone https://github.com/vitorfs/bootcamp.git </copy>
+git clone https://github.com/vitorfs/bootcamp.git 
 ```
   >Note: Feel free to browse to Github and have a look at the Bootcamp repo to learn about what the application does: https://github.com/vitorfs/bootcamp.git 
   
 6.	In your shell, type the following and hit **Enter**:
-```cd bootcamp</copy>
+```cd bootcamp
 ```
 7.	Select release 1.0.4 of the Bootcamp application, In your shell, type the following and hit **Enter**:
 ```git reset --hard c15452cef893b36fb9f82dda0239983333c3ecf4
@@ -246,7 +247,7 @@ B: Type :wr and hit **Enter**
 C: Type :q and hit **Enter** to leave VIM
 20.	Change the directory back to bootcamp
 ```
-cd ~/bootcamp</copy>
+cd ~/bootcamp
 ```
 21.	To run migration and serve the app, type the following command and hit **Enter**:
 ```
