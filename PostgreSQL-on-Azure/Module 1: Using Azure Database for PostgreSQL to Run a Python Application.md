@@ -50,13 +50,13 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
 7.	In the "You have no storage mounted" tab, click Show Advanced Settings
 8.	In the Advanced Settings tab, use the existing Resource Group and enter a unique name for the Storage Account and File Share
 9.	Click Create Storage
-10.	Once the storage gets created, your Cloud Shell will initialize and very shortly be ready to use
+10. Once the storage gets created, your Cloud Shell will initialize and very shortly be ready to use
 
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 Create an Azure PostGreSQL Database Server**
 
-11.	A server contains a group of databases. You can create an Azure Database for PostgreSQL server using the az postgres server create command. Copy and paste the following into the Azure command line:
+11. A server contains a group of databases. You can create an Azure Database for PostgreSQL server using the az postgres server create command. Copy and paste the following into the Azure command line:
 ```
 <copy> az postgres server create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --sku-name GP_Gen4_2 --storage-size 51200
 ```
@@ -113,18 +113,22 @@ psql --host=pqsql<inject story-id="story://Content-Private/content/dfd/SP-OSS/po
 create database bootcamp;
 ```
 4.	The Bootcamp database is now created. To connect to it and confirm it was created, type the following command and hit **Enter**:
-\c bootcamp;
-5.	Exit psql and return to the Azure Cloud Shell prompt. Type the following command and hit **Enter**:
-
-```\q</copy>
 ```
-Create an Azure VM running Ubuntu Server
+\c bootcamp;
+```
+5.	Exit psql and return to the Azure Cloud Shell prompt. Type the following command and hit **Enter**:
+```
+\q
+```
+
+### Create an Azure VM running Ubuntu Server
+
 1.	Create a virtual machine with the az vm create command. When creating a virtual machine, several options are available such as operating system image, disk sizing, and administrative credentials. In this example, a virtual machine is created with a name of myVM running Ubuntu Server.
 ```
 az vm create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name myubuntu --vnet-name myvnet --image ubuntults --generate-ssh-keys</copy>
 ```
 2.	Hit Enter
-Note: Once the VM has been created, the Azure CLI outputs information about the VM. Take note of the publicIpAddress, this address can be used to access the virtual machine..
+  >Note: Once the VM has been created, the Azure CLI outputs information about the VM. Take note of the publicIpAddress, this address can be used to access the virtual machine..
 ```
 {    
  "fqdns": "",
@@ -139,20 +143,19 @@ Note: Once the VM has been created, the Azure CLI outputs information about the 
 ```
    >Note: If you should get a "Cloud Shell timed out" in the Azure Bash Shell, select reconnect. Once the shell provisions again, you may continue with your next step.
    >Note: To find the public IP address for the Ubuntu Server go to the Azure Portal and Select Virtual Machines from the resource Blade.
-Select MyUbuntu from the Virtual Machine List.
-Highlight Overview and view the Public IP address on the right side.
-3.	By default, only SSH connections are allowed into Linux virtual machines deployed in Azure. This VM is going to be a webserver, so you need to open a port from the Internet. Use the az vm open-port command to open the desired port.
+3. Select MyUbuntu from the Virtual Machine List. Highlight Overview and view the Public IP address on the right side.
+4.	By default, only SSH connections are allowed into Linux virtual machines deployed in Azure. This VM is going to be a webserver, so you need to open a port from the Internet. Use the az vm open-port command to open the desired port.
 ```
 az vm open-port --port 8000 --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" copy="false" /> --name myubuntu</copy>
 ```
-4.	Hit **Enter**
-5.	Connect to the VM using SSH in the Azure CLI
+5.	Hit **Enter**
+6.	Connect to the VM using SSH in the Azure CLI
 ```
 ssh [publicIpAddress]
 ```
    >Note: Replace [publicIpAddress] with the IP address of your server (without brackets) noted in the previous step (2).
-6.	Hit **Enter**
-7.	When prompted to continue, type yesand hit **Enter**
+7.	Hit **Enter**
+8.	When prompted to continue, type yesand hit **Enter**
 
 ### Configure the Bootcamp Application
 
