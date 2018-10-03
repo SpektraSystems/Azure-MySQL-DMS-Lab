@@ -1,4 +1,4 @@
-# Module 2 : Using Azure Database for PostgreSQL to Run a Python Application
+# Module 2 : Using Azure Database for PostgreSQL to Run a Python Application 
 ## Overview
 Azure Database for PostgreSQL is a PostgreSQL database service built on Microsoft's scalable cloud infrastructure for application developers.
 Leverage your existing open-source PostgreSQL skills and tools and scale on-the-fly without downtime to efficiently deliver existing and new applications with reduced operational overhead.
