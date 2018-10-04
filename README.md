@@ -1,2 +1,2 @@
-# Azure-MySQL-PostGreSQL-Lab
-Azure MySQL &amp; PostGreSQL Labs
+# Azure-MySQL-DMS-Lab
+Hands on Lab for MySQL on Azure &mp; Database Migration Service
