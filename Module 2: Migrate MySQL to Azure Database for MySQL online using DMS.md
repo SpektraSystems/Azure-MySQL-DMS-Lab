@@ -43,35 +43,7 @@ To find these values, take the following steps:
 2.	Hover your cursor over each field, and the copy icon appears to the right of the text. Select the copy icon as needed to copy the values.
 
 In this example, the server name is mydemoserver.mysql.database.azure.com, and the server admin sign-in is myadmin@mydemoserver.
-Connect to MySQL by using the mysql command-line tool. There are a number of applications you can use to connect to your Azure Database for MySQL server.
-
-## Connect to MySQL by using the mysql command-line tool
-
-Let's first use the mysql command-line tool to illustrate how to connect to the server. You can also use a web browser and Azure Cloud Shell as described here without installing additional software. If you have the mysql utility installed locally, you can connect from there as well.
-1.	Launch Azure Cloud Shell via the terminal icon (>_) on the upper right of the Azure portal.<br/>
-<img src="images/mysql4.jpg"/><br/>
-2.	Azure Cloud Shell opens in your browser, where you can type bash shell commands.<br/>
-<img src="images/mysql5.jpg"/><br/>
-3.	At the Cloud Shell prompt, connect to your Azure Database for MySQL server by typing the mysql command line.
-To connect to an Azure Database for MySQL server with the mysql utility, use the following format:
-```
-mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
-```
-4.	To ensure the connection is functional, view the server status by typing status at the mysql> prompt.
-```
-status
-```
-5.	Create a blank database at the mysql> prompt by typing the following command:
-```
-CREATE DATABASE quickstartdb;
-```
-6.	List the databases at the mysql> prompt by typing the following command:
-```
-SHOW DATABASES;
-```
-7.	Type \q, and then select the Enter key to quit the mysql tool. You can close Azure Cloud Shell after you are done.
-
-Now you have connected to the Azure Database for MySQL server and created a blank user database. Continue to the next section for a similar exercise. The next exercise connects to the same server by using another common tool, MySQL Workbench.
+Continue to the next section for a similar exercise. The next exercise connects to the same server by using another common tool, MySQL Workbench.
 
 ## Migrate the sample schema
 
