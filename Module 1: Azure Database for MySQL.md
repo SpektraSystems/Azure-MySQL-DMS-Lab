@@ -5,31 +5,37 @@ Azure Database for MySQL provides a fully managed database service for applicati
 ## Provision MySQL Server
 
 ### Create a database using Azure CLI
+Launch cloudshell from top right corner.
+
+<img src="images/az_login_link.png/>
+
 1.	Open a PowerShell command prompt, you can find a shortcut on the desktop, and run:
+
+<img src="images/az_login_link.png/>
+
 ```
 az login
 ```
-2.	When prompted, open a web browser window and open <copy>https://aka.ms/devicelogin </copy> and enter the code shown in the console window 
+2.	When prompted, open a web browser window and open <copy>https://aka.ms/devicelogin </copy> and enter the code shown in the console window.
+<img src="images/login_code.png/>
+
 3.	Sign in with your Azure Credentials that provided for this lab.
 4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
 5.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL:
 ```
-az mysql server create --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --location <inject key="myResourceGroupLocation" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --performance-tier Basic --compute-units 50 --ssl-enforcement Disabled --storage-size 51200
+az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
 ```
 
 6.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
 ```
-az mysql server firewall-rule create --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --server mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --resource-group <resource-group-name> --server <server name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
-7.	**Congratuations**. You now have somewhere to store your data.
-
-``3 pull requests found in 2 sections``
 
 ## Deploy the website
 
 We now need to change some configuration code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
 
-1.	First we need to acquire a copy of the code for the website. To do this we will clone it from an existing GitHub repository. In the open PowerShell command prompt run the following commands:
+1.	First we need to Login in VM and acquire a copy of the code for the website. For this we will clone it from an existing GitHub repository. In the open PowerShell command prompt run the following commands:
 ```
 cd \
 mkdir code 
@@ -40,23 +46,28 @@ git clone https://github.com/gavinbarron/bikeshop.git
 ```
 cd bikeshop
 git config user.name  "holuser"
-git config user.email "<inject key="AzureAdUserEmail" copy="false" />"
+git config user.email "<AzureAdUserEmail>"
 ```
 3.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
 4.	Using the file menu choose Open File.
 5.	Open the wp-config.php file at **C:\code\bikeshop\**
-6.	On line 44 replace [Username] with **mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
+6.	On line 44 replace [Username] with **mysqlAdminUser@mysql**
 7.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
-8.	On line 51 replace [Servername] with **<copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
+8.	On line 51 replace [Servername] with **yourservername**
 9.	**Save** the changes.
 10.	To deploy this code to the website that has been provisioned you will need to set up some deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
 11.	Execute this command to set your deployment username and password:
 ```
-az webapp deployment user set --user-name <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />user --password gitDeployPassw0rd!
+az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
+```
+
+12. Execute the command to create web app:
+```
+az webapp create --name testwebapp --resource-group ODL-dms-35892-onpremisesrg --plan newappPlan --deployment-local-git
 ```
 12.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
-git remote add website https://<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />user@<inject key="webSiteName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.scm.azurewebsites.net:443/ <inject key="webSiteName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.git
+git remote add website "https://username@webappname.scm.azurewebsites.net/uniquename.git"
 ```
 13.	Commit your changes to the local git repository:
 ```
@@ -75,26 +86,35 @@ git push website
 
 Before our WordPress website will work we need to populate the database with data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
 
-1.	Open **MySQL Workbench**.
+1.	Open **MySQL Workbench** in your labvm.
+
 2.	Click **OK** and ignore the unsupported operating system warning.
 3.	Click on the **+** icon to add a new **MySQL Connection**.
+<img src="images/mysql_workbench.png"/>
 4.	Setup the new connection to MySQL using the server name, username, and password.
 * Connection Name: **<copy>bikestoreshop</copy>**
 * Hostname: **<copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.mysql.database.azure.com</copy>**
 * Username: **<copy>mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
-* Password: **<copy>mysqlAdminPassw0rd!</copy>**
+<img src="images/new_connection.png"/>
 
 5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
-6.	Click on **Test Connection** to verify that you have configured the connection correctly. If you have issues check that you have provided the all of the details correctly. Once the test connection action succeeds click on **OK**.
-7.	Double click on the connection name to open a session against your MySQL database.
-8.	Choose File > Run SQL Script. 
-9.	Open the sql file from **C:\code\bikeshop\bikeshop.sql** and click the **Run**.
-10.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
-11.	Click the refresh icon to see it listed in the set of availble schema.
-12.	Open the web site: <inject key="webSiteUrl" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" />
-13.	The website should be up and running.
+<img src="images/paasword.png"/>
 
-`` 3 pull requests found in 2 sections ``
+6.	Click on **Test Connection** to verify that you have configured the connection correctly.
+<img src="images/test_connection.png"/>
+
+7. If you have issues check that you have provided the all of the details correctly. Once the test connection action succeeds click on **OK**.
+<img src="images/Click_ok.png">
+
+8.	Double click on the connection name to open a session against your MySQL database.
+9.	Choose File > Run SQL Script. 
+10.	Open the sql file from **C:\code\bikeshop\bikeshop.sql** and click the **Run**.
+<img src="images/Click_run.png">
+11.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
+<img src="images/Click_close.png">
+12.	Click the refresh icon to see it listed in the set of availble schema.
+13.	Open the web site: <inject key="webSiteUrl" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" />
+14.	The website should be up and running.
 
 ## Scale Up Azure Database for MySQL
 
@@ -129,8 +149,6 @@ az mysql server update --resource-group <inject key="myResourceGroupName" story-
 ```
 az mysql server update --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --compute-units 50
 ```
-
-``3 pull requests found in 2 sections``
 
 ### CONCLUSION
 As a fully integrated service, Azure Database for MySQL plugs you into Microsoft’s global network of value-add services, datacenters, security features, and round-the-clock monitoring. Azure Database for MySQL is designed to deliver highly available MySQL Compatibility at scale to the forefront, all backed by a best of class SLA. Trust Azure to keep your enterprise-ready MySQL applications up and running.
