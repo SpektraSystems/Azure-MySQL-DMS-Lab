@@ -20,6 +20,7 @@ az login
 
 3.	Sign in with your Azure Credentials that provided for this lab.
 4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
+<img src="images/login_success.png"/>
 5.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL:
 ```
 az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
@@ -86,7 +87,6 @@ git push website
 Before our WordPress website will work we need to populate the database with data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
 
 1.	Open **MySQL Workbench** in your labvm.
-
 2.	Click **OK** and ignore the unsupported operating system warning.
 3.	Click on the **+** icon to add a new **MySQL Connection**.
 <img src="images/mysql_workbench.png"/>
@@ -139,14 +139,14 @@ az mysql server list
 3.	The cli will provide a list of your MySQL databases, there should only be one. Note the resourceGroup and name values 
 4.	On the command prompt, run below command to scale up to 2 vCore and 70 GB of Storage
 ```
-az mysql server update --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --compute-units 100 --set storageMb=71680
+az mysql server update --resource-group <resource-group-name> --name <server name> --compute-units 100 --set storageMb=71680
 ```
 5.	Run below command to scale down to 1 vCore.
 
    >Note that storage cannot be scaled down
    
 ```
-az mysql server update --resource-group <inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --name mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /> --compute-units 50
+az mysql server update --resource-group <resource-group-name> --name <server name> --compute-units 50
 ```
 
 ### CONCLUSION
