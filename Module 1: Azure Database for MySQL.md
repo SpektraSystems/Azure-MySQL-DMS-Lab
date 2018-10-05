@@ -7,11 +7,11 @@ Azure Database for MySQL provides a fully managed database service for applicati
 ### Create a database using Azure CLI
 Launch cloudshell from top right corner.
 
-<img src="images/az_login_link.png/>
+<img src="images/az_login_link.png"/>
 
 1.	Open a PowerShell command prompt, you can find a shortcut on the desktop, and run:
 
-<img src="images/az_login_link.png/>
+<img src="images/az_login_link.png"/>
 
 ```
 az login
