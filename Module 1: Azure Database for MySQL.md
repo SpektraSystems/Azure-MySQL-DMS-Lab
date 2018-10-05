@@ -64,11 +64,11 @@ az webapp deployment user set --user-name "username" --password gitDeployPassw0r
 
 12. Execute the command to create web app:
 ```
-az webapp create --name testwebapp --resource-group ODL-dms-35892-onpremisesrg --plan newappPlan --deployment-local-git
+az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appPlanname> --deployment-local-git
 ```
 12.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
-git remote add website "https://username@webappname.scm.azurewebsites.net/uniquename.git"
+git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
 13.	Commit your changes to the local git repository:
 ```
