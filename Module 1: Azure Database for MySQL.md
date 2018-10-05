@@ -22,6 +22,7 @@ az login
 4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
 <img src="images/login_success.png"/>
 5.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL:
+
 ```
 az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
 ```
