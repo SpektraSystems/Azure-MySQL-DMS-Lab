@@ -6,16 +6,17 @@ Azure Database for MySQL provides a fully managed database service for applicati
 
 ### Create a database using Azure CLI
 Launch cloudshell from top right corner.
+
 <img src="images/cloud_shell.png"/>
 
 1. Run the az login command.
-<img src="images/az_login_link.png"/>
 
 ```
 az login
 ```
+<img src="images/az_login_link.png"/>
 2.	When prompted, open a web browser window and open <copy>https://aka.ms/devicelogin </copy> and enter the code shown in the console window.
-<img src="images/login_code.png/>
+<img src="images/login_code.png"/>
 
 3.	Sign in with your Azure Credentials that provided for this lab.
 4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
