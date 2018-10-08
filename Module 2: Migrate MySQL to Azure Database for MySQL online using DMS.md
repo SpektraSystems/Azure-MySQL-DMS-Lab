@@ -97,29 +97,8 @@ To import schema to Azure Database for MySQL target, run the following command:
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
-### Register the Microsoft.DataMigration resource provider
-
-1.	Sign in to the Azure portal, select All services, and then select Subscriptions.<br/>
- <img src="images/dms1.jpg"/><br/>
-2.	Select the subscription in which you want to create the instance of the Azure Database Migration Service, and then select Resource providers.<br/>
- <img src="images/dms2.jpg"/><br/>
-3.	Search for migration, and then to the right of Microsoft.DataMigration, select Register.<br/>
- <img src="images/dms3.jpg"/><br/>
- 
-## Create a DMS instance
-1.	In the Azure portal, select + Create a resource, search for Azure Database Migration Service, and then select Azure Database Migration Service from the drop-down list.<br/>
- <img src="images/dms4.jpg"/><br/>
-2.	On the Azure Database Migration Service screen, select Create.<br/>
- <img src="images/dms5.jpg"/><br/>
-3.	On the Create Migration Service screen, specify a name for the service, the subscription, and a new or existing resource group.<br/>
-4.	Select an existing virtual network (VNET) or create a new one.<br/>
-The VNET provides the Azure Database Migration Service with access to the source SQL Server and the target Azure SQL Database instance.<br/>
-5.	Select a pricing tier.<br/>
-<img src="images/dms6.jpg"/><br/>
-6.	Select Create to create the service.
-
 ## Create a migration project
-After the service is created, locate it within the Azure portal, open it, and then create a new migration project.<br/>
+We have already dms instance in Azure portal, open it, and then create a new migration project.<br/>
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.<br/>
  <img src="images/dms7.jpg"/><br/>
 2.	On the Azure Database Migration Services screen, search for the name of the Azure Database Migration Service instance that you created, and then select the instance.<br/>
