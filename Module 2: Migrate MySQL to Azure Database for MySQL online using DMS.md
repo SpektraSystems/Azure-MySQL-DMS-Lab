@@ -54,6 +54,12 @@ SHOW DATABASES;
 
 To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database. To extract schema, you can use mysqldump with - - no-data parameter.
 
+1. Login to **dms-dev-vm** through **Remote Desktop Connection**
+2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator** and change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master** using following command:
+```
+cd C:\CloudLabs\Installer\test_db-master\test_db-master
+```
+
 If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
 ```
 SET group_concat_max_len = 8192;
