@@ -1,12 +1,12 @@
 # Azure Database for MySQL
 
-Azure Database for MySQL provides a fully managed database service for application development and deployment allowing you to provision a MySQL database instance in minutes and scale it on the fly. With comprehensive pricing models, and configurable sizing, you get all the features you need such as high-availability, monitoring and security, and backup and recovery, all with reduced management overhead. These features are built into the service and are aligned to a simple, predictable pricing model.
+Azure Database for MySQL provides a fully managed database service for application development and deployment allowing you to provision a MySQL database instance in minutes and scale it on the fly. With comprehensive pricing models, and configurable sizing, you get all the features you need such as high-availability, monitoring and security, and backup and recovery, all with reduced manahttps://github.com/SpektraSystems/Azure-MySQL-DMS-Labgement overhead. These features are built into the service and are aligned to a simple, predictable pricing model.
 
 ## Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 
 1.  **Navigate** to https://portal.azure.com and login (from the previous step).
 2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
-<img src="images/username1.jpg"/><br/>
+<img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="images/password1.jpg"/><br/>
 4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
