@@ -73,7 +73,13 @@ SET group_concat_max_len = 8192;
   GROUP BY SchemaName;
 ```  
   
-Run the drop foreign key (which is the second column) in the query result to drop foreign key.
+Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the some more queries to drop the foreign key.
+```
+SELECT concat('ALTER TABLE ', TABLE_NAME, ' DROP FOREIGN KEY ', CONSTRAINT_NAME, ';') 
+FROM information_schema.key_column_usage 
+WHERE CONSTRAINT_SCHEMA = 'employees' 
+AND referenced_table_name IS NOT NULL;
+```
 
 If you have trigger in the data (insert or update trigger), it will enforce data integrity in the target ahead of the replicated data from the source. The recommendation is to disable triggers in all the tables at the target during migration, and then enable the triggers after migration is done.
 
