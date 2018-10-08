@@ -94,15 +94,18 @@ SHOW DATABASES;
 
 ## Migrate the sample schema
 
-To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database. To extract schema, you can use mysqldump with - - no-data parameter.
+To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database.<br/>
 
-1. Login to **dms-dev-vm** through **Remote Desktop Connection**
-2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator** and change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
+1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
+<img src="images/new8.jpg"/><br/>
+2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
+<img src="images/new9.jpg"/><br/>
+3. Change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
 ```
 cd C:\CloudLabs\Installer\test_db-master\test_db-master\sakila
 ```
 
-If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
+4. If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
 ```
 SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
@@ -121,24 +124,24 @@ SET group_concat_max_len = 8192;
   GROUP BY SchemaName;
 ```  
   
-Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
+5. Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
 ```
 SELECT concat('ALTER TABLE ', TABLE_NAME, ' DROP FOREIGN KEY ', CONSTRAINT_NAME, ';') 
 FROM information_schema.key_column_usage 
 WHERE CONSTRAINT_SCHEMA = 'employees' 
 AND referenced_table_name IS NOT NULL;
 ```
-Assuming you have MySQL sakila sample database in the on-premise system, the command to do schema migration using mysqldump is:
+6. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
-To import schema to Azure Database for MySQL target, run the following command:
+7. To import schema to Azure Database for MySQL target, run the following command:
 ```
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
 ## Create a migration project
-We have already dms instance in Azure portal, open it, and then create a new migration project.<br/>
+Please note that you have already dms instance,which is pre-created for you. It would be in existing rg ODL_dms_XXXX-cloudrg.
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
  <img src="images/08_new_migration_project.png"/><br/>
 2.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDatabaseForMySQL.<br/>
@@ -159,7 +162,7 @@ Alternately, you can chose Create project only to create the migration project n
  <img src="images/11_target.png"/><br/>
 2.	Select Save, and then on the Map to target databases screen, map the source and the target database for migration.<br/>
 If the target database contains the same database name as the source database, the Azure Database Migration Service selects the target database by default.<br/>
- <img src="images/12_select_employees.png"/><br/>
+ <img src="images/01_sakila.png"/><br/>
 3.	Select Save, on the Migration summary screen, in the Activity name text box, specify a name for the migration activity, and then review the summary to ensure that the source and target details match what you previously specified.Select **Run migration**.<br/>
  <img src="images/13_Runnow.png"/><br/>
 
