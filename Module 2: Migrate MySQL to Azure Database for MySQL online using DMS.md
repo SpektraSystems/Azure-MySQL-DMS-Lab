@@ -54,13 +54,12 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 ## Create an Azure Database for MySQL server
 
-To connect to your database server, you need the full server name and admin sign-in credentials. You might have noted those values earlier in the Quickstart article. If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
+To connect to your database server, you need the full server name and admin sign-in credentials.If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
 To find these values, take the following steps:
 1.	Open your server's Overview page. Make a note of the Server name and Server admin login name.
 2.	Hover your cursor over each field, and the copy icon appears to the right of the text. Select the copy icon as needed to copy the values.
 
 For example, the server name is mydemoserver.mysql.database.azure.com, and the server admin sign-in is myadmin@mydemoserver.
-Continue to the next section for a similar exercise.
 
 ## Connect to MySQL by using Cloud Shell
 
@@ -83,7 +82,7 @@ status
 ```
 5. Create a blank database at the mysql> prompt by typing the following command:
 ```
-CREATE DATABASE employees;
+CREATE DATABASE sakila;
 ```
 The command might take a few moments to complete.
 
@@ -98,9 +97,9 @@ SHOW DATABASES;
 To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database. To extract schema, you can use mysqldump with - - no-data parameter.
 
 1. Login to **dms-dev-vm** through **Remote Desktop Connection**
-2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator** and change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master** using following command:
+2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator** and change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
 ```
-cd C:\CloudLabs\Installer\test_db-master\test_db-master
+cd C:\CloudLabs\Installer\test_db-master\test_db-master\sakila
 ```
 
 If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
@@ -122,22 +121,14 @@ SET group_concat_max_len = 8192;
   GROUP BY SchemaName;
 ```  
   
-Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the some more queries to drop the foreign key.
+Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
 ```
 SELECT concat('ALTER TABLE ', TABLE_NAME, ' DROP FOREIGN KEY ', CONSTRAINT_NAME, ';') 
 FROM information_schema.key_column_usage 
 WHERE CONSTRAINT_SCHEMA = 'employees' 
 AND referenced_table_name IS NOT NULL;
 ```
-
-If you have trigger in the data (insert or update trigger), it will enforce data integrity in the target ahead of the replicated data from the source. The recommendation is to disable triggers in all the tables at the target during migration, and then enable the triggers after migration is done.
-
-To disable triggers in target database, use the following command:
-```
-SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
-```
-
-Assuming you have MySQL employees sample database in the on-premise system, the command to do schema migration using mysqldump is:
+Assuming you have MySQL sakila sample database in the on-premise system, the command to do schema migration using mysqldump is:
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
