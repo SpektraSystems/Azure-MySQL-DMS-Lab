@@ -53,53 +53,52 @@ We now need to change some connection string code for the WordPress website so t
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
-2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
-3.	LLaunch a PowerShell Windows and execute following code. 
+2.	Launch a PowerShell Windows and execute following code. 
 ```
 cd \
 mkdir code 
 cd code
 git clone https://github.com/gavinbarron/bikeshop.git 
 ```
-4.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt. Please ensure to enter the AAD username you received as a part of lab guide. 
+3.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt. Please ensure to enter the AAD username you received as a part of lab guide. 
 ```
 cd bikeshop
 git config user.name  "holuser"
 git config user.email "<AzureAdUserEmail>"
 ```
-5.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
-6.	Using the file menu choose Open File.
-7.	Open the wp-config.php file at **C:\code\bikeshop\**
-8.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
+4.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
+5.	Using the file menu choose Open File.
+6.	Open the wp-config.php file at **C:\code\bikeshop\**
+7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
 9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
 10.	On line 51 replace [Servername] with **yourservername**
-9.	**Save** the changes.
-10.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
-11.	Execute this command to set your deployment username and password:
+11.	**Save** the changes.
+12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
+13.	Execute this command to set your deployment username and password:
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
 
-12. Execute the command to create web app: Please ensure to use exisitng resource group name. 
+14. Execute the command to create web app: Please ensure to use exisitng resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appPlanname> --deployment-local-git
 ```
-12.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+15.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
-13.	Commit your changes to the local git repository:
+16.	Commit your changes to the local git repository:
 ```
 git add . 
 git commit -m "Updating config to point at new Azure Database for MySQL"
 ```
-14.	Deploy your changes to the **Azure App Service**:
+17.	Deploy your changes to the **Azure App Service**:
 ``` 
 git push website
 ```
-15.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK. 
-16.	Wait for the push to the website to complete.
-17.	The website is now updated and just needs data.
+18.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK. 
+19.	Wait for the push to the website to complete.
+20.	The website is now updated and just needs data.
 
 ### Populate Data
 
