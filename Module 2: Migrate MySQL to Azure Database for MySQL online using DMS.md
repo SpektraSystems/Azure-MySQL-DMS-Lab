@@ -59,8 +59,8 @@ To find these values, take the following steps:
 1.	Open your server's Overview page. Make a note of the Server name and Server admin login name.
 2.	Hover your cursor over each field, and the copy icon appears to the right of the text. Select the copy icon as needed to copy the values.
 
-In this example, the server name is mydemoserver.mysql.database.azure.com, and the server admin sign-in is myadmin@mydemoserver.
-Continue to the next section for a similar exercise. The next exercise connects to the same server by using another common tool, MySQL Workbench. Azure Cloud shell
+For example, the server name is mydemoserver.mysql.database.azure.com, and the server admin sign-in is myadmin@mydemoserver.
+Continue to the next section for a similar exercise.
 
 ## Connect to MySQL by using Cloud Shell
 
