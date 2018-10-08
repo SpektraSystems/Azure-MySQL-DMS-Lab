@@ -101,29 +101,28 @@ mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file pa
 We have already dms instance in Azure portal, open it, and then create a new migration project.<br/>
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
  <img src="images/08_new_migration_project.png"/><br/>
-4.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDatabaseForMySQL.<br/>
-5. In the **Choose type of activity** section, select **Online data migration**.
+2.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDatabaseForMySQL.<br/>
+3. In the **Choose type of activity** section, select **Online data migration**.
 ``` 
 Note
 Alternately, you can chose Create project only to create the migration project now and execute the migration later.
 ```
-6.	Select Save, note the requirements to successfully use DMS to migrate data, and then select Create and run activity.<br/>
+4.	Select Save, note the requirements to successfully use DMS to migrate data, and then select Create and run activity.<br/>
 <img src="images/09_create_project.png"/>
 
 ## Specify source details
-1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.<br/>
- <img src="images/dms9.jpg"/><br/>
+1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.Select Save<br/>
+ <img src="images/10_source.png"/><br/>
  
 ## Specify target details
-1.	Select Save, and then on the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Employees schema was deployed by using mysqldump.<br/>
- <img src="images/dms10.jpg"/><br/>
+1.On the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Employees schema was deployed by using mysqldump.<br/>
+ <img src="images/11_target.png"/><br/>
 2.	Select Save, and then on the Map to target databases screen, map the source and the target database for migration.<br/>
 If the target database contains the same database name as the source database, the Azure Database Migration Service selects the target database by default.<br/>
- <img src="images/dms11.jpg"/><br/>
-3.	Select Save, on the Migration summary screen, in the Activity name text box, specify a name for the migration activity, and then review the summary to ensure that the source and target details match what you previously specified.<br/>
- <img src="images/dms12.jpg"/><br/>
-Run the migration
-*	Select Run migration.
+ <img src="images/12_select_employees.png"/><br/>
+3.	Select Save, on the Migration summary screen, in the Activity name text box, specify a name for the migration activity, and then review the summary to ensure that the source and target details match what you previously specified.Select **Run migration**.<br/>
+ <img src="images/13_Runnow.png"/><br/>
+
 The migration activity window appears, and the Status of the activity is initializing.
 
 ## Monitor the migration
