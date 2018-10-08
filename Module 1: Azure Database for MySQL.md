@@ -87,26 +87,26 @@ az webapp deployment user set --user-name "username" --password gitDeployPassw0r
 ```
 az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
 ```
-14. Execute the command to create web app: Please ensure to use exisitng resource group name. 
+15. Execute the command to create web app: Please ensure to use exisitng resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
-15.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+16.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
-16.	Commit your changes to the local git repository:
+17.	Commit your changes to the local git repository:
 ```
 git add . 
 git commit -m "Updating config to point at new Azure Database for MySQL"
 ```
-17.	Deploy your changes to the **Azure App Service**:
+18.	Deploy your changes to the **Azure App Service**:
 ``` 
 git push website
 ```
-18.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK. 
-19.	Wait for the push to the website to complete.
-20.	The website is now updated and just needs data.
+19.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK. 
+20.	Wait for the push to the website to complete.
+21.	The website is now updated and just needs data.
 
 ### Populate Data
 
