@@ -101,14 +101,14 @@ mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file pa
 We have already dms instance in Azure portal, open it, and then create a new migration project.<br/>
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
  <img src="images/08_new_migration_project.png"/><br/>
-4.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDbForMySQL.<br/>
-<img src="images/09_create_project.png"/>
-5.	In the **Choose type of activity** section, select **Online data migration**.<br/>
+4.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDatabaseForMySQL.<br/>
+5. In the **Choose type of activity** section, select **Online data migration**.<br/
 ``` 
 Note
 Alternately, you can chose Create project only to create the migration project now and execute the migration later.
 ```
 6.	Select Save, note the requirements to successfully use DMS to migrate data, and then select Create and run activity.<br/>
+<img src="images/09_create_project.png"/>
 
 ## Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.<br/>
