@@ -36,7 +36,12 @@ Launch Azure Cloud Shell on the upper right of the Azure portal.
 Please note that you need to provide existing resource group, which is pre-created for you. It should be something like ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
 
 ```
-az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
+az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password 'mysqlAdminPassw0rd!' --ssl-enforcement Disabled --storage-size 51200
+```
+
+
+```
+if you have a sign of exclamation in password etc, put the string in quotes to avoid bash conflict.
 ```
 
 3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
