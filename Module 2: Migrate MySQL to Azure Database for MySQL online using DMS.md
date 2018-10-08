@@ -29,7 +29,6 @@ Continue to the next section for a similar exercise. The next exercise connects 
 
 3. At the Cloud Shell prompt, connect to your Azure Database for MySQL server by typing the mysql command line.To connect to an Azure Database for MySQL server with the mysql utility, use the following format:
 ```
-
 mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
 ```
 After it's connected, the mysql utility displays a mysql> prompt at which you can type commands.
@@ -37,19 +36,16 @@ After it's connected, the mysql utility displays a mysql> prompt at which you ca
 
 4. To ensure the connection is functional, view the server status by typing status at the mysql> prompt.
 ```
-
 status
 ```
 5. Create a blank database at the mysql> prompt by typing the following command:
 ```
-
 CREATE DATABASE employees;
 ```
 The command might take a few moments to complete.
 
 6. List the databases at the mysql> prompt by typing the following command:
 ```
-
 SHOW DATABASES;
 ```
 7. Type **\q**, and then select the Enter key to quit the mysql tool. You can close Azure Cloud Shell after you are done.
