@@ -11,13 +11,13 @@ In this tutorial, you learn how to:
 
 ## Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 1.  **Navigate** to https://portal.azure.com and login from the provided credentials.
-2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.
+2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
 <img src="images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="images/password1.jpg"/><br/>
 4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
 5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
-<img src="images/shell.jpg"/><br/>
+<img src="images/cloud_shell.png"/><br/>
 6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
 <img src="images/post1.jpg"/><br/>
 7.	In the **You have no storage mounted** tab, click on **Show Advanced Settings**.<br/>
