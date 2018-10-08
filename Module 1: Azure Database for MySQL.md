@@ -9,32 +9,22 @@ Launch Azure Cloud Shell on the upper right of the Azure portal.
 
 <img src="images/cloud_shell.png"/>
 
-1. Run the az login command.
-
-```
-az login
-```
-<img src="images/az_login_link.png"/>
-2.	When prompted, open a web browser window and open <copy>https://aka.ms/devicelogin </copy> and enter the code shown in the console window.
-<img src="images/login_code.png"/>
-
-3.	Sign in with your Azure Credentials that provided for this lab.
-4.	You now have an Azure CLI session open against the Azure Subscription hosting your lab.
-<img src="images/login_success.png"/>
-5.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL:
+2.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL: 
+Please note that you need to provide existing resource group, which is pre-created for you. It should be something like ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
 
 ```
 az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
 ```
 
-6.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
+3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
+Please ensure to change RG Name and Server Name
 ```
 az mysql server firewall-rule create --resource-group <resource-group-name> --server <server name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 ## Deploy the website
 
-We now need to change some configuration code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
+We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
 
 1.	First we need to Login in VM and acquire a copy of the code for the website. For this we will clone it from an existing GitHub repository. In the open PowerShell command prompt run the following commands:
 ```
