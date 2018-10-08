@@ -83,10 +83,13 @@ git config user.email "<AzureAdUserEmail>"
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
-
+14. Execute this command to create app service plan: Please ensure to use exisitng resource group name.
+```
+az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
+```
 14. Execute the command to create web app: Please ensure to use exisitng resource group name. 
 ```
-az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appPlanname> --deployment-local-git
+az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
 15.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
