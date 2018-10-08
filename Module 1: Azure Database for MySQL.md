@@ -2,6 +2,29 @@
 
 Azure Database for MySQL provides a fully managed database service for application development and deployment allowing you to provision a MySQL database instance in minutes and scale it on the fly. With comprehensive pricing models, and configurable sizing, you get all the features you need such as high-availability, monitoring and security, and backup and recovery, all with reduced management overhead. These features are built into the service and are aligned to a simple, predictable pricing model.
 
+## Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
+
+1.  **Navigate** to https://portal.azure.com and login (from the previous step).
+2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
+<img src="images/username1.jpg"/><br/>
+3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
+<img src="images/password1.jpg"/><br/>
+4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
+5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
+<img src="images/shell.jpg"/><br/>
+6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
+<img src="images/post1.jpg"/><br/>
+7.	In the **You have no storage mounted** tab, click on **Show Advanced Settings**.<br/>
+<img src="images/post2.jpg"/><br/>
+8.	In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**.<br/>
+<img src="images/post3.jpg"/><br/>
+9.	Click **Create Storage**.
+10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use.<br/>
+<img src="images/post4.jpg"/><br/>
+
+   > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
+You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
+
 ## Provision MySQL Server
 
 ### Create a database using Azure CLI
@@ -26,33 +49,38 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
 
-1.	First we need to Login in VM and acquire a copy of the code for the website. For this we will clone it from an existing GitHub repository. In the open PowerShell command prompt run the following commands:
+
+
+1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
+<img src="images/new8.jpg"/><br/>
+2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
+3.	LLaunch a PowerShell Windows and execute following code. 
 ```
 cd \
 mkdir code 
 cd code
 git clone https://github.com/gavinbarron/bikeshop.git 
 ```
-2.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt:
+4.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt. Please ensure to enter the AAD username you received as a part of lab guide. 
 ```
 cd bikeshop
 git config user.name  "holuser"
 git config user.email "<AzureAdUserEmail>"
 ```
-3.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
-4.	Using the file menu choose Open File.
-5.	Open the wp-config.php file at **C:\code\bikeshop\**
-6.	On line 44 replace [Username] with **mysqlAdminUser@mysql**
-7.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
-8.	On line 51 replace [Servername] with **yourservername**
+5.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
+6.	Using the file menu choose Open File.
+7.	Open the wp-config.php file at **C:\code\bikeshop\**
+8.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
+9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
+10.	On line 51 replace [Servername] with **yourservername**
 9.	**Save** the changes.
-10.	To deploy this code to the website that has been provisioned you will need to set up some deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
+10.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
 11.	Execute this command to set your deployment username and password:
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
 
-12. Execute the command to create web app:
+12. Execute the command to create web app: Please ensure to use exisitng resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appPlanname> --deployment-local-git
 ```
