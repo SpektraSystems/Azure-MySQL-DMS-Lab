@@ -9,6 +9,29 @@ In this tutorial, you learn how to:
 *	Run the migration.
 *	Monitor the migration.
 
+## Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
+1.  **Navigate** to https://portal.azure.com and login (from the previous step).
+2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
+<img src="images/username1.jpg"/><br/>
+3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
+<img src="images/password1.jpg"/><br/>
+4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
+5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
+<img src="images/shell.jpg"/><br/>
+6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
+<img src="images/post1.jpg"/><br/>
+7.	In the **You have no storage mounted** tab, click on **Show Advanced Settings**.<br/>
+<img src="images/post2.jpg"/><br/>
+8.	In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**.<br/>
+<img src="images/post3.jpg"/><br/>
+9.	Click **Create Storage**.
+10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use.<br/>
+<img src="images/post4.jpg"/><br/>
+
+   > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
+You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
+
+
 ## Get the connection information
 
 To connect to your database server, you need the full server name and admin sign-in credentials. You might have noted those values earlier in the Quickstart article. If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
