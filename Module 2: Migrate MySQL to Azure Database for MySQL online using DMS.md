@@ -2,7 +2,8 @@
 
 You can use the Azure Database Migration Service to migrate the databases from an on-premises MySQL instance to Azure Database for MySQL with minimal downtime. In other words, migration can be achieved with minimum downtime to the application. In this tutorial, you migrate the Employees sample database from an on-premises instance of MySQL 5.7 to Azure Database for MySQL by using an online migration activity in the Azure Database Migration Service.
 In this tutorial, you learn how to:
-*   Create an Azure Database for MySQL server 
+*  Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
+*  Create an Azure Database for MySQL server 
 *	Migrate the sample schema using mysqldump utility.
 *	Create an instance of the Azure Database Migration Service.
 *	Create a migration project by using the Azure Database Migration Service.
@@ -31,8 +32,27 @@ In this tutorial, you learn how to:
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 
+## Provision MySQL Server
 
-## Get the connection information
+### Create a MySQL server using Azure CLI
+Launch Azure Cloud Shell on the upper right of the Azure portal.
+
+<img src="images/cloud_shell.png"/>
+
+2.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL: 
+Please note that you need to provide existing resource group, which is pre-created for you. It should be something like ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
+
+```
+az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password mysqlAdminPassw0rd! --ssl-enforcement Disabled --storage-size 51200
+```
+
+3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
+Please ensure to change RG Name and Server Name
+```
+az mysql server firewall-rule create --resource-group <resource-group-name> --server <server name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+```
+
+## Create an Azure Database for MySQL server
 
 To connect to your database server, you need the full server name and admin sign-in credentials. You might have noted those values earlier in the Quickstart article. If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
 To find these values, take the following steps:
