@@ -98,14 +98,8 @@ To complete all the database objects like table schemas, indexes and stored proc
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="images/new8.jpg"/><br/>
-2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
-<img src="images/new9.jpg"/><br/>
-3. Change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
-```
-cd C:\CloudLabs\Installer\test_db-master\test_db-master\sakila
-```
 
-4. If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
+2. Inside the virtual machine launch MySQL workbench, If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
 ```
 SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
@@ -123,14 +117,19 @@ SET group_concat_max_len = 8192;
   AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries
   GROUP BY SchemaName;
 ```  
-  
-5. Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
+3. Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
 ```
 SELECT concat('ALTER TABLE ', TABLE_NAME, ' DROP FOREIGN KEY ', CONSTRAINT_NAME, ';') 
 FROM information_schema.key_column_usage 
 WHERE CONSTRAINT_SCHEMA = 'employees' 
 AND referenced_table_name IS NOT NULL;
 ```
+4. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
+<img src="images/new9.jpg"/><br/>
+5. Change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
+```
+cd C:\CloudLabs\Installer\test_db-master\test_db-master\sakila
+```  
 6. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
