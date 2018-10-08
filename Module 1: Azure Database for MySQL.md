@@ -16,7 +16,7 @@ Azure Database for MySQL provides a fully managed database service for applicati
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post1.jpg"/><br/>
 7.	In the **You have no storage mounted** tab, click on **Show Advanced Settings**.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post2.jpg"/><br/>
-8.	In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**.<br/>
+8.	In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**.<br/> Please ensure to enter a unique name for storage account name and share name. 
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post3.jpg"/><br/>
 9.	Click **Create Storage**.
 10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use.<br/>
