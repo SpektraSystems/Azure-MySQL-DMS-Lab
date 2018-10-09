@@ -169,7 +169,7 @@ Alternately, you can chose Create project only to create the migration project n
 <img src="images/09_create_project.png"/>
 
 ### Specify source details
-1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.Select Save<br/>
+1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
  <img src="images/10_source.png"/><br/>
  
 ### Specify target details
