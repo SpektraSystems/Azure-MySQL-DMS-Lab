@@ -91,7 +91,7 @@ az appservice plan create --resource-group <resource-group-name> --name <appserv
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
-16.	Now we need to configure the local git repository to know about the website. Switch back to the opened powershell inside your dms-dev-vm. To do this we will add a new remote to the repository. Change the username value which you have in step 12 and webapp name which you just created.Also replace uniquename with webapp name. 
+16.	Now we need to configure the local git repository to know about the website.  To do this we will add a new remote to the repository. Switch back to the opened powershell inside your dms-dev-vm. Change the username value which you have in step 12 and webapp name which you just created. Also, replace uniquename with webapp name. 
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
