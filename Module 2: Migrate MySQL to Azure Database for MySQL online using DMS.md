@@ -5,13 +5,13 @@ You can use the Azure Database Migration Service to migrate the databases from a
 Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
 
 ## Scenario Overview
-1.1: **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
-1.2: **Create an Azure Database for MySQL server 
-1.3: **Migrate the sample schema using mysqldump utility.
-1.4: **Create an instance of the Azure Database Migration Service.
-1.5: **Create a migration project by using the Azure Database Migration Service.
-1.6: **Run the migration.
-1.7: **Monitor the migration.
+1.1: **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.</br>
+1.2: **Provision Azure MySQL server.</br>
+1.3: **Create an Azure Database for MySQL server.</br>
+1.4: **Migrate the sample schema using mysqldump utility.</br>
+1.5: **Create a migration project by using the Azure Database Migration Service.</br>
+1.6: **Monitor the migration.</br>
+1.7: **Perform migration cutover.</br>
 
 ## 1.1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 1.  **Navigate** to https://portal.azure.com and login from the provided credentials.
@@ -35,7 +35,7 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 
-## 1.2: Create an Azure Database for MySQL server
+## 1.2: Provision Azure MySQL server
 Launch Azure Cloud Shell on the upper right of the Azure portal.
 
 <img src="images/cloud_shell.png"/>
@@ -66,7 +66,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 ```
 <img src="images/new6.png"/>
 
-## Create an Azure Database for MySQL server
+## 1.3: Create an Azure Database for MySQL server
 
 To connect to your database server, you need the full server name and admin sign-in credentials.If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
 To find these values, take the following steps:
@@ -106,54 +106,26 @@ SHOW DATABASES;
 ```
 7. Type **\q**, and then select the Enter key to quit the mysql tool. You can close Azure Cloud Shell after you are done.
 
-## Migrate the sample schema
+## 1.4: Migrate the sample schema using mysqldump utility
 
 To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database.<br/>
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="images/new8.jpg"/><br/>
 
-2. Inside the virtual machine launch MySQL workbench, If you have foreign keys in your schema, the initial load and continuous sync of the migration will fail. Execute the following script in MySQL workbench to extract the drop foreign key script and add foreign key script.
-```
-SET group_concat_max_len = 8192;
-    SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
-    FROM
-    (SELECT 
-    KCU.REFERENCED_TABLE_SCHEMA as SchemaName,    
-    KCU.TABLE_NAME,
-    KCU.COLUMN_NAME,
-    CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
-    CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery
-    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
-    WHERE
-      KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-      AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-  AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries
-  GROUP BY SchemaName;
-```  
-3. Run the drop foreign key (which is the second column) in the query result to drop foreign key.we need to run the one more query to drop the foreign key.
-```
-SELECT concat('ALTER TABLE ', TABLE_NAME, ' DROP FOREIGN KEY ', CONSTRAINT_NAME, ';') 
-FROM information_schema.key_column_usage 
-WHERE CONSTRAINT_SCHEMA = 'employees' 
-AND referenced_table_name IS NOT NULL;
-```
-4. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
+2. Inside the virtual machine click on **Start** button search for **command prompt**, run it as **administrator**.</br> 
 <img src="images/new9.jpg"/><br/>
-5. Change the directory to **C:\CloudLabs\Installer\test_db-master\test_db-master\sakila** using following command:
-```
-cd C:\CloudLabs\Installer\test_db-master\test_db-master\sakila
-```  
-6. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
+
+3. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
-7. To import schema to Azure Database for MySQL target, run the following command:
+4. To import schema to Azure Database for MySQL target, run the following command:
 ```
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
-## Create a migration project
+## 1.5: Create a migration project by using the Azure Database Migration Service.
 Please note that you have already dms instance,which is pre-created for you. It would be in existing rg ODL_dms_XXXX-cloudrg.
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
  <img src="images/08_new_migration_project.png"/><br/>
@@ -166,11 +138,11 @@ Alternately, you can chose Create project only to create the migration project n
 4.	Select Save, note the requirements to successfully use DMS to migrate data, and then select Create and run activity.<br/>
 <img src="images/09_create_project.png"/>
 
-## Specify source details
+### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.Select Save<br/>
  <img src="images/10_source.png"/><br/>
  
-## Specify target details
+### Specify target details
 1.On the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Employees schema was deployed by using mysqldump.<br/>
  <img src="images/11_target.png"/><br/>
 2.	Select Save, and then on the Map to target databases screen, map the source and the target database for migration.<br/>
@@ -181,13 +153,13 @@ If the target database contains the same database name as the source database, t
 
 The migration activity window appears, and the Status of the activity is initializing.
 
-## Monitor the migration
+## 1.6: Monitor the migration
 1.	On the migration activity screen, select Refresh to update the display until the Status of the migration shows as Running.<br/>
  <img src="images/sakila_status.png"/><br/>
 2.	Under Database Name, select specific database to get to the migration status for Full data load and Incremental data sync operations.
 Full data load will show the initial load migration status while Incremental data sync will show change data capture (CDC) status.
  
-## Perform migration cutover
+## 1.7: Perform migration cutover
 After the initial Full load is completed, the databases are marked Ready to cutover.
 1.	When you're ready to complete the database migration, select Start Cutover.
  <img src="images/sakila_cutover.png"/><br/>
