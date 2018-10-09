@@ -2,7 +2,21 @@
 
 Azure Database for MySQL provides a fully managed database service for application development and deployment allowing you to provision a MySQL database instance in minutes and scale it on the fly. With comprehensive pricing models, and configurable sizing, you get all the features you need such as high-availability, monitoring and security, and backup and recovery, all with reduced management overhead. These features are built into the service and are aligned to a simple, predictable pricing model.
 
-## Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
+An Azure Resource Group is a logical container into which Azure resources are deployed and managed. A Resource Group and a Storage Account must exist before any virtual machines can be created. In this example, a resource group already created in the some region. You will need to use resource group name while creating your Database and Server.
+
+Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
+
+## Scenario Overview
+
+This hands-on lab will step you through the following:
+
+1.1 :   **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.**<br/>
+1.2 :	  **Create an Azure database for MySQL using Azure CLI.**<br/>
+1.3 :   **Deploy the website**<br/>
+1.4 :   **Configure the connection**<br/>
+1.5 :   **Scale Up Azure Database for MySQL**<br/>
+
+## 1.1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 
 1.  **Navigate** to https://portal.azure.com and login (from the previous step).
 2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
@@ -25,10 +39,8 @@ Azure Database for MySQL provides a fully managed database service for applicati
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 
-## Provision MySQL Server
-
-### Create a database using Azure CLI
-Launch Azure Cloud Shell on the upper right of the Azure portal.
+## 1.2: Create a Azure database for MySQL using Azure CLI
+1. Launch Azure Cloud Shell on the upper right of the Azure portal.
 
 <img src="images/cloud_shell.png"/>
 
@@ -63,7 +75,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 ```
 <img src="images/new6.png"/>
 
-## Deploy the website
+## 1.3: Deploy the website
 
 We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
 
@@ -129,7 +141,7 @@ git push website
 19.	Wait for the push to the website to complete.</br>
 20.	The website is now updated and just needs data.
 
-### Populate Data
+## 1.4: Configure the connection
 
 Before our WordPress website will work we need to populate the database with data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
 
@@ -163,7 +175,7 @@ Before our WordPress website will work we need to populate the database with dat
 13.	Open the web site.</br>
 14.	The website should be up and running.</br>
 
-## Scale Up Azure Database for MySQL
+## 1.5: Scale Up Azure Database for MySQL
 
 Microsoft Azure offers a variety of pricing tiers for the Azure Database for MySQL service. In the earlier stages of this hands on lab, the lowest priced teir was used. In the real world, there may be times the application which relies upon your MySQL database will come under heavy load. In turn, this load may consume all of the resources available to your MySQL database instance, causing degraded performance. Scaling up your Azure Database for MySQL will help to noticeably improve performance in many of these cases, allowing you to keep processing your data efficiently.
 Refer to these documentation articles for more infomation on Pricing Tiers should you want to get more information on scaling your MySQL databases.
@@ -191,5 +203,5 @@ az mysql server update --resource-group <resource-group-name> --name <server nam
 ```
 <img src="images/new16.png"/>
 
-### CONCLUSION
+## CONCLUSION
 As a fully integrated service, Azure Database for MySQL plugs you into Microsoft’s global network of value-add services, datacenters, security features, and round-the-clock monitoring. Azure Database for MySQL is designed to deliver highly available MySQL Compatibility at scale to the forefront, all backed by a best of class SLA. Trust Azure to keep your enterprise-ready MySQL applications up and running.
