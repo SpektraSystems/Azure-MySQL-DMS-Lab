@@ -58,7 +58,7 @@ We now need to change some connection string code for the WordPress website so t
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file. Login with the credentials which you received after sign up for the lab.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
-2.	Launch a PowerShell Windows and execute following code. 
+2.	Launch a PowerShell Windows inside **dms-dev-vm** and execute following code. 
 ```
 cd \
 mkdir code 
