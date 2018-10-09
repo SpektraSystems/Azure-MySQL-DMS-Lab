@@ -45,8 +45,8 @@ You may enlarge the shell by dragging the border or clicking on the maximize but
 <img src="images/cloud_shell.png"/>
 
 2.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL: 
-Please note that you need to provide existing resource group, which is pre-created for you. It should be something like ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
-* --resource-group : Give your **onpremisesrg** Resourse Group name
+Please note that you need to provide existing resource groups, which is pre-created for you.You have two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.It should be create in ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
+* --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resourse Group name
 * --sku-name: **GP_Gen5_8** 
 * --name : Give any unique name for your **MySQL server**
 * --location: **as per your existing resource group**
@@ -68,7 +68,7 @@ if you have a sign of exclamation in password etc, put the string in quotes to a
 
 3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
 Please ensure to change RG Name and Server Name.
-* --resource-group : Give your **onpremisesrg** Resourse Group name
+* --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resourse Group name
 * --server : Give name of your **MySQL server**.
 ```
 az mysql server firewall-rule create --resource-group <resource-group-name> --server <server name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -123,7 +123,7 @@ az webapp create --name <webappname> --resource-group <resource-group-name> --pl
 ```
 <img src="images/new10.png"/>
 
-15. Now Open the new powershell window and need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+15. Now Open the new powershell window and need to configure the local git repository to know about the website.You need to ensure,you are running this command in **C:\code\bikeshop** directory. To do this we will add a new remote to the repository:
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
@@ -149,7 +149,7 @@ Before our WordPress website will work we need to populate the database with dat
 2.	Click **OK** and ignore the unsupported operating system warning.
 3.	Click on the **+** icon to add a new **MySQL Connection**.
 <img src="images/mysql_workbench.png"/>
-4.	Setup the new connection to MySQL using the server name, username, and password.
+4.	Setup the new connection to MySQL using the server name, username, and password that you created previously.Go to azure portal Click on **resource groups>ODL_dms_XXXX-cloudrg>Click on MySQL server>Overview.** You can copy servername and username from overview page.
 
 * Connection Name: **bikestoreshop**
 * Hostname: **servername.mysql.database.azure.com**
