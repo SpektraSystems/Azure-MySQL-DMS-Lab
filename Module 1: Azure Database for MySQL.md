@@ -78,8 +78,8 @@ git config user.email "<AzureAdUserEmail>"
 9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
 10.	On line 51 replace [Servername] with **yourservername**
 11.	**Save** the changes.
-12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
-13.	Execute this command to set your deployment username and password:
+12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open Azure CLI prompt in azure portal.
+13.	Execute this command to set your deployment username and password. Replace user name with globly unique value.
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
