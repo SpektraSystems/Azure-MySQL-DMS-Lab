@@ -131,9 +131,10 @@ Before our WordPress website will work we need to populate the database with dat
 3.	Click on the **+** icon to add a new **MySQL Connection**.
 <img src="images/mysql_workbench.png"/>
 4.	Setup the new connection to MySQL using the server name, username, and password.
-* Connection Name: **<copy>bikestoreshop</copy>**
-* Hostname: **<copy>mysql</copy>**
-* Username: **<copy>mysqlAdminUser@mysql</copy>**
+
+* Connection Name: **bikestoreshop**
+* Hostname: **servername.mysql.database.azure.com**
+* Username: **mysqlAdminUser@servername**
 <img src="images/new_connection.png"/>
 
 5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
@@ -181,6 +182,7 @@ az mysql server list
 ```
 az mysql server update --resource-group <resource-group-name> --name <server name> --storage-size 71680
 ```
+<img src="images/new16.png"/>
 
 ### CONCLUSION
 As a fully integrated service, Azure Database for MySQL plugs you into Microsoft’s global network of value-add services, datacenters, security features, and round-the-clock monitoring. Azure Database for MySQL is designed to deliver highly available MySQL Compatibility at scale to the forefront, all backed by a best of class SLA. Trust Azure to keep your enterprise-ready MySQL applications up and running.
