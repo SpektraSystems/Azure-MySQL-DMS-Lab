@@ -119,11 +119,11 @@ Before our WordPress website will work we need to populate the database with dat
 <img src="images/mysql_workbench.png"/>
 4.	Setup the new connection to MySQL using the server name, username, and password.
 * Connection Name: **<copy>bikestoreshop</copy>**
-* Hostname: **<copy>mysql</copy>**
-* Username: **<copy>mysqlAdminUser@mysql</copy>**
+* Hostname: **<copy>servername.mysql.database.azure.com</copy>**
+* Username: **<copy>mysqlAdminUser@servername</copy>**
 <img src="images/new_connection.png"/>
 
-5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
+5.	Click on **"Store in Vault..."** to enter password of MySQL server,that you set previously for MySQL server and click **OK**.
 <img src="images/paasword.png"/>
 
 6.	Click on **Test Connection** to verify that you have configured the connection correctly.
