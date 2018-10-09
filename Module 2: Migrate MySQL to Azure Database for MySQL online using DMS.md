@@ -161,10 +161,6 @@ Please note that you have already dms instance,which is pre-created for you. It 
  <img src="images/08_new_migration_project.png"/><br/>
 2.	On the New migration project screen, specify a name for the project, in the Source server type text box, select MySQL, in the Target server type text box, select AzureDatabaseForMySQL.<br/>
 3. In the **Choose type of activity** section, select **Online data migration**.
-``` 
-Note
-Alternately, you can chose Create project only to create the migration project now and execute the migration later.
-```
 4.	Select Save, note the requirements to successfully use DMS to migrate data, and then select Create and run activity.<br/>
 <img src="images/09_create_project.png"/>
 
