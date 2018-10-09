@@ -91,7 +91,7 @@ az appservice plan create --resource-group <resource-group-name> --name <appserv
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
-16.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+16.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository. Change the username value which you have in step 13 and webapp name which you just created.
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
