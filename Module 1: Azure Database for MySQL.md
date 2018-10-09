@@ -118,8 +118,8 @@ Before our WordPress website will work we need to populate the database with dat
 <img src="images/mysql_workbench.png"/>
 4.	Setup the new connection to MySQL using the server name, username, and password.
 * Connection Name: **<copy>bikestoreshop</copy>**
-* Hostname: **<copy>mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.mysql.database.azure.com</copy>**
-* Username: **<copy>mysqlAdminUser@mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" /></copy>**
+* Hostname: **<copy>mysql</copy>**
+* Username: **<copy>mysqlAdminUser@mysql</copy>**
 <img src="images/new_connection.png"/>
 
 5.	Click on **"Store in Vault..."** to enter password, then click **OK**.
@@ -138,7 +138,7 @@ Before our WordPress website will work we need to populate the database with dat
 11.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
 <img src="images/Click_close.png">
 12.	Click the refresh icon to see it listed in the set of availble schema.
-13.	Open the web site: <inject key="webSiteUrl" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" />
+13.	Open the web site.
 14.	The website should be up and running.
 
 ## Scale Up Azure Database for MySQL
@@ -150,7 +150,7 @@ There are option to scale up the Azure Database for MySQL service, either using 
 ### Using the Azure Portal
 1.	Open the Azure portal in a web browser <copy>https://portal.azure.com </copy>.
 2.	Open All Resources blade.
-3.	Click on the MySQL database mysql<inject key="myResourceGroupName" story-id="story://content-private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy" copy="false" />.
+3.	Click on the MySQL database mysql.
 4.	Click Pricing Tier option.
 5.	Change the vCore and Storage up or down as need and click OK to save changes.
 
