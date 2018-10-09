@@ -121,7 +121,7 @@ To complete all the database objects like table schemas, indexes and stored proc
 <img src="images/new9.jpg"/><br/>
 
 3. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
-* -h: **onpremvmip**
+* -h: **onpremvmip** (You can get this ip from dms-dev-vm)
 * -u: **root**
 * -p: **Password!1234**
 * --databases: **sakila**
@@ -136,8 +136,17 @@ mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\CloudLabs\Installer
 ```
 
 4. To import schema to Azure Database for MySQL target, run the following command:
+* -h: **servername.mysql.database.azure.com**
+* -u: **mysqladminuser@servername**
+* -p: **Password of your server**
+* --databases: **sakila**
 ```
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
+```
+
+Foe example:
+```
+mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\CloudLabs\Installer\test_db-master\test_db-master\sakila\sakila-mv-data.sql
 ```
 
 ## 1.5: Create a migration project by using the Azure Database Migration Service.
