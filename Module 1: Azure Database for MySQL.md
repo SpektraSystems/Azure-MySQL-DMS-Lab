@@ -104,7 +104,8 @@ git commit -m "Updating config to point at new Azure Database for MySQL"
 ``` 
 git push website
 ```
-19.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK. 
+19.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK.
+<img src="images/new13.png"/>
 20.	Wait for the push to the website to complete.
 21.	The website is now updated and just needs data.
 
