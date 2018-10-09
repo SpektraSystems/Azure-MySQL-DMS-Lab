@@ -144,7 +144,7 @@ mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\CloudLabs\Installer
 4. To import schema to Azure Database for MySQL target, run the following command:
 * -h: **servername.mysql.database.azure.com**
 * -u: **mysqladminuser@servername**
-* -p: **Password of your server**
+* -p: **Password of your MySQLserver**
 * --databases: **sakila**
 ```
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
@@ -170,10 +170,19 @@ Alternately, you can chose Create project only to create the migration project n
 
 ### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
+* Source server name: **your on prem server**<br/><br/>
+* Server Port: **3306**<br/>
+* User name: **root**<br/>
+* Password: **Password!1234**<br/>
+
  <img src="images/10_source.png"/><br/>
  
 ### Specify target details
-1.On the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Employees schema was deployed by using mysqldump.<br/>
+1.On the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Sakila schema was deployed by using mysqldump.<br/>
+* Target Server name: **servername.mysql.database.azure.com**<br/>
+* Username: **mysqladminuser@servername**<br/>
+* Password: **Password of your MySQLserver**<br/>
+
  <img src="images/11_target.png"/><br/>
 2.	Select Save, and then on the Map to target databases screen, map the source and the target database for migration.<br/>
 If the target database contains the same database name as the source database, the Azure Database Migration Service selects the target database by default.<br/>
