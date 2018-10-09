@@ -138,7 +138,7 @@ mysqldump -h [servername] -u [username] -p[password] --databases [db name] > [sc
 For example:
 
 ```
-mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\sakila-mv-data.sql
+mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\DMS\sakila-mv-data.sql
 ```
 
 4. To import schema to Azure Database for MySQL target, run the following command:
@@ -150,13 +150,13 @@ mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\sakila-mv-data.sql
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
-Foe example:
+For example:
 ```
-mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\sakila-mv-data.sql
+mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\DMS\sakila-mv-data.sql
 ```
 
 ```
-Note: After executing this command you will get some error.You can ignore this error and continue.
+Note: After executing this command you may get some error around Super User permissions.You may ignore this error and continue.
 ```
 <img src="images/dms%20ss.png"/>
 
