@@ -149,7 +149,7 @@ Before our WordPress website will work we need to populate the database with dat
 2.	Click **OK** and ignore the unsupported operating system warning.
 3.	Click on the **+** icon to add a new **MySQL Connection**.
 <img src="images/mysql_workbench.png"/>
-4.	Setup the new connection to MySQL using the server name, username, and password that you created previously. Go to azure portal Click on **resource groups>ODL_dms_XXXX-cloudrg>Click on MySQL server>Overview** You can copy servername and username from overview page.
+4.	Setup the new connection to MySQL using the server name, username, and password that you created previously. Go to azure portal Click on **resource groups**>**ODL_dms_XXXX-cloudrg**>**Click on MySQL server**>**Overview** You can copy servername and username from overview page.
 
 * Connection Name: **bikestoreshop**
 * Hostname: **servername.mysql.database.azure.com**
