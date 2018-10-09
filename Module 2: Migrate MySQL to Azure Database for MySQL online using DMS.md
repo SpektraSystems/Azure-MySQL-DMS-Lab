@@ -155,6 +155,11 @@ Foe example:
 mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\sakila-mv-data.sql
 ```
 
+```
+Note: After executing this command you will get some error.You can ignore this error and continue.
+```
+<img src="images/dms%20ss.png"/>
+
 ## Exercise 5: Create a migration project by using the Azure Database Migration Service.
 Please note that you have already dms instance,which is pre-created for you. It would be in existing rg ODL_dms_XXXX-cloudrg.
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
