@@ -5,15 +5,21 @@ You can use the Azure Database Migration Service to migrate the databases from a
 Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
 
 ## Scenario Overview
-1.1: **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.**</br>
-1.2: **Provision Azure MySQL server.**</br>
-1.3: **Create an Azure Database for MySQL server**</br>
-1.4: **Migrate the sample schema using mysqldump utility.**</br>
-1.5: **Create a migration project by using the Azure Database Migration Service.**</br>
-1.6: **Monitor the migration.**</br>
-1.7: **Perform migration cutover.**</br>
+**Exercise 1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.**</br>
+**Exercise 2: Provision Azure MySQL server.**</br>
+**Exercise 3: Create an Azure Database for MySQL server**</br>
+**Exercise 4: Migrate the sample schema using mysqldump utility.**</br>
+**Exercise 5: Create a migration project by using the Azure Database Migration Service.**</br>
+**Exercise 6: Monitor the migration.**</br>
+**Exercise 7: Perform migration cutover.**</br>
 
-## 1.1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
+**Important**
+
+* For an optimal migration experience, Microsoft recommends creating an instance of the Azure Database Migration Service in the same Azure region as the target database. Moving data across regions or geographies can slow down the migration process and introduce errors.
+
+* Escape **Exercise 1** and **Exercise 2**, if you already did in Module 1. Use same credential for this Module.
+
+## Exercise 1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 1.  **Navigate** to https://portal.azure.com and login from the provided credentials.
 2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
 <img src="images/username1.jpg"/><br/>
@@ -35,7 +41,7 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
 
-## 1.2: Provision Azure MySQL server
+## Exercise 2: Provision Azure MySQL server
 Launch Azure Cloud Shell on the upper right of the Azure portal.
 
 <img src="images/cloud_shell.png"/>
@@ -66,7 +72,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 ```
 <img src="images/new6.png"/>
 
-## 1.3: Create an Azure Database for MySQL server
+## Exercise 3: Create an Azure Database for MySQL server
 
 To connect to your database server, you need the full server name and admin sign-in credentials.If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
 To find these values, take the following steps:
@@ -110,7 +116,7 @@ SHOW DATABASES;
 ```
 7. Type **\q**, and then select the Enter key to quit the mysql tool. You can close Azure Cloud Shell after you are done.
 
-## 1.4: Migrate the sample schema using mysqldump utility
+## Exercise 4: Migrate the sample schema using mysqldump utility
 
 To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database.<br/>
 
@@ -149,7 +155,7 @@ Foe example:
 mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\CloudLabs\Installer\test_db-master\test_db-master\sakila\sakila-mv-data.sql
 ```
 
-## 1.5: Create a migration project by using the Azure Database Migration Service.
+## Exercise 5: Create a migration project by using the Azure Database Migration Service.
 Please note that you have already dms instance,which is pre-created for you. It would be in existing rg ODL_dms_XXXX-cloudrg.
 1.	In the Azure portal, select All services, search for Azure Database Migration Service, and then select Azure Database Migration Services.Select + **New Migration Project**.<br/>
  <img src="images/08_new_migration_project.png"/><br/>
@@ -177,13 +183,13 @@ If the target database contains the same database name as the source database, t
 
 The migration activity window appears, and the Status of the activity is initializing.
 
-## 1.6: Monitor the migration
+## Exercise 6: Monitor the migration
 1.	On the migration activity screen, select Refresh to update the display until the Status of the migration shows as Running.<br/>
  <img src="images/sakila_status.png"/><br/>
 2.	Under Database Name, select specific database to get to the migration status for Full data load and Incremental data sync operations.
 Full data load will show the initial load migration status while Incremental data sync will show change data capture (CDC) status.
  
-## 1.7: Perform migration cutover
+## Exercise 7: Perform migration cutover
 After the initial Full load is completed, the databases are marked Ready to cutover.
 1.	When you're ready to complete the database migration, select Start Cutover.
  <img src="images/sakila_cutover.png"/><br/>
