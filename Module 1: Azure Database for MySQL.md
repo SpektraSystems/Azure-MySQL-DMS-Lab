@@ -52,7 +52,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 ## Deploy the website
 
-We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
+We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which we will deploy in further steps.
 
 
 
