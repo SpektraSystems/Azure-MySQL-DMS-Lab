@@ -20,7 +20,7 @@ Azure Database for MySQL provides a fully managed database service for applicati
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post3.jpg"/><br/>
 9.	Click **Create Storage**.
 10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use. Choose **ODL-dms-35976-cloudrg** for existing resource group. 35976 is unique ID and diffent for you. <br/>
-<img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post41.jpg"/><br/>
+<img src="images/post41.jpg"/><br/>
 
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
 You may enlarge the shell by dragging the border or clicking on the maximize button on the top right of the shell.
