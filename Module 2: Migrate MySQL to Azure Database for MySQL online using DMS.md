@@ -170,7 +170,7 @@ Alternately, you can chose Create project only to create the migration project n
 
 ### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
-* Source server name: **your on prem server**<br/><br/>
+* Source server name: **your on prem server**<br/>
 * Server Port: **3306**<br/>
 * User name: **root**<br/>
 * Password: **Password!1234**<br/>
