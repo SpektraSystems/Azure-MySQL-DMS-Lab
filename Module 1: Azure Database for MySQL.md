@@ -86,44 +86,48 @@ git config user.email "<AzureAdUserEmail>"
 5.	Using the file menu choose Open File.
 6.	Open the wp-config.php file at **C:\code\bikeshop\**
 7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
-9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
-10.	On line 51 replace [Servername] with **yourservername**
-11.	**Save** the changes.
-12.	To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.
+8.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
+9.	On line 51 replace [Servername] with **yourservername**
+10.	**Save** the changes.
+11.	To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.Browse the URL and paste the code there,you will get successfully login in your azure account.
 ```
 az login --use-device-code
 ```
 <img src="images/new11.png"/>
 
-13.	Execute this command to set your deployment username and password:
+12.	Execute this command to set your deployment username and password:
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
-14. Execute this command to create app service plan: Please ensure to use exisitng resource group name.
+13. Execute this command to create app service plan: Please ensure to use exisitng resource group name.
 ```
 az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
 ```
-15. Execute the command to create web app: Please ensure to use exisitng resource group name. 
+<img src="images/new9.png"/>
+
+14. Execute the command to create web app: Please ensure to use exisitng resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
-16.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+<img src="images/new10.png"/>
+
+15. Now Open the new powershell window and need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
-17.	Commit your changes to the local git repository:
+16.	Commit your changes to the local git repository:
 ```
 git add . 
 git commit -m "Updating config to point at new Azure Database for MySQL"
 ```
-18.	Deploy your changes to the **Azure App Service**:
+17.	Deploy your changes to the **Azure App Service**:
 ``` 
 git push website
 ```
-19.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK.
+18.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK.
 <img src="images/new13.png"/>
-20.	Wait for the push to the website to complete.</br>
-21.	The website is now updated and just needs data.
+19.	Wait for the push to the website to complete.</br>
+20.	The website is now updated and just needs data.
 
 ### Populate Data
 
