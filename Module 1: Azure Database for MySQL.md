@@ -67,8 +67,6 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
 
-
-
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
 2.	Launch a PowerShell Windows and execute following code. 
@@ -91,7 +89,11 @@ git config user.email "<AzureAdUserEmail>"
 9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
 10.	On line 51 replace [Servername] with **yourservername**
 11.	**Save** the changes.
-12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
+12.	To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.
+```
+az login --use-device-code
+```
+<img src="images/new11.png"/>
 13.	Execute this command to set your deployment username and password:
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
