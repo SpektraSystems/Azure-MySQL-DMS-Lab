@@ -145,7 +145,7 @@ Before our WordPress website will work we need to populate the database with dat
 
 Microsoft Azure offers a variety of pricing tiers for the Azure Database for MySQL service. In the earlier stages of this hands on lab, the lowest priced teir was used. In the real world, there may be times the application which relies upon your MySQL database will come under heavy load. In turn, this load may consume all of the resources available to your MySQL database instance, causing degraded performance. Scaling up your Azure Database for MySQL will help to noticeably improve performance in many of these cases, allowing you to keep processing your data efficiently.
 Refer to these documentation articles for more infomation on Pricing Tiers should you want to get more information on scaling your MySQL databases.
-There are two options to scale up or scale down the Azure Database for MySQL service, either using the portal or via CLI.
+There are option to scale up the Azure Database for MySQL service, either using the portal or via CLI.
 
 ### Using the Azure Portal
 1.	Open the Azure portal in a web browser <copy>https://portal.azure.com </copy>.
@@ -165,14 +165,7 @@ az mysql server list
 3.	The cli will provide a list of your MySQL databases, there should only be one. Note the resourceGroup and name values 
 4.	On the command prompt, run below command to scale up to 2 vCore and 70 GB of Storage
 ```
-az mysql server update --resource-group <resource-group-name> --name <server name> --compute-units 100 --set storageMb=71680
-```
-5.	Run below command to scale down to 1 vCore.
-
-   >Note that storage cannot be scaled down
-   
-```
-az mysql server update --resource-group <resource-group-name> --name <server name> --compute-units 50
+az mysql server update --resource-group <resource-group-name> --name <server name> --storage-size 71680
 ```
 
 ### CONCLUSION
