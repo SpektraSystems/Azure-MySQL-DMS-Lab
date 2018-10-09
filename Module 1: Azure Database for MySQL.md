@@ -73,7 +73,7 @@ git config user.email "<AzureAdUserEmail>"
 ```
 4.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
 5.	Using the file menu choose Open File.
-6.	Open the wp-config.php file at **C:\code\bikeshop\**
+6.	Open the **wp-config.php** file at **C:\code\bikeshop\
 7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
 9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
 10.	On line 51 replace [Servername] with **yourservername**
