@@ -191,13 +191,12 @@ There are option to scale up the Azure Database for MySQL service, either using 
    >Note that the Basic level can only scale to 2 vCores and 1024 GB of storage
 
 ### Using the Azure CLI 2.0
-1.	Using the PowerShell prompt that you have open and connected to the Azure subscription.
-2.	Using Azure CLI get information about the MySQL databases that you have access to:
+1.	Using Azure CLI get information about the MySQL databases that you have access to:
 ```
 az mysql server list
 ```
-3.	The cli will provide a list of your MySQL databases, there should only be one. Note the resourceGroup and name values 
-4.	On the command prompt, run below command to scale up to 2 vCore and 70 GB of Storage
+2.	The cli will provide a list of your MySQL databases, there should only be one. Note the resourceGroup and name values 
+3.	On the command prompt, run below command to scale up to 2 vCore and 70 GB of Storage
 ```
 az mysql server update --resource-group <resource-group-name> --name <server name> --storage-size 71680
 ```
