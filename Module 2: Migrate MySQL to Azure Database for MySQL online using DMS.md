@@ -5,13 +5,13 @@ You can use the Azure Database Migration Service to migrate the databases from a
 Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
 
 ## Scenario Overview
-1.1: **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.</br>
-1.2: **Provision Azure MySQL server.</br>
-1.3: **Create an Azure Database for MySQL server.</br>
-1.4: **Migrate the sample schema using mysqldump utility.</br>
-1.5: **Create a migration project by using the Azure Database Migration Service.</br>
-1.6: **Monitor the migration.</br>
-1.7: **Perform migration cutover.</br>
+1.1: **Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.**</br>
+1.2: **Provision Azure MySQL server.**</br>
+1.3: **Create an Azure Database for MySQL server**</br>
+1.4: **Migrate the sample schema using mysqldump utility.**</br>
+1.5: **Create a migration project by using the Azure Database Migration Service.**</br>
+1.6: **Monitor the migration.**</br>
+1.7: **Perform migration cutover.**</br>
 
 ## 1.1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 1.  **Navigate** to https://portal.azure.com and login from the provided credentials.
@@ -84,6 +84,10 @@ For example, the server name is mydemoserver.mysql.database.azure.com, and the s
 <img src="images/00_cloud_shell.png"/>
 
 3. At the Cloud Shell prompt, connect to your Azure Database for MySQL server by typing the mysql command line.To connect to an Azure Database for MySQL server with the mysql utility, use the following format:
+* --host: **servername.mysql.database.azure.com** 
+* --user: **mysqladminuser@servername**
+* -p: **Password of your server**
+
 ```
 mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
 ```
@@ -117,9 +121,20 @@ To complete all the database objects like table schemas, indexes and stored proc
 <img src="images/new9.jpg"/><br/>
 
 3. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
+* -h: **onpremvmip**
+* -u: **root**
+* -p: **Password!1234**
+* --databases: **sakila**
+
 ```
-mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
+mysqldump -h [servername] -u [username] -p[password] --databases [db name] > [schema file path]
 ```
+For example:
+
+```
+mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\CloudLabs\Installer\test_db-master\test_db-master\sakila\sakila-mv-data.sql
+```
+
 4. To import schema to Azure Database for MySQL target, run the following command:
 ```
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
