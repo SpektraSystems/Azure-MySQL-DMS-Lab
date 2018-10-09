@@ -94,6 +94,7 @@ git config user.email "<AzureAdUserEmail>"
 az login --use-device-code
 ```
 <img src="images/new11.png"/>
+
 13.	Execute this command to set your deployment username and password:
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
