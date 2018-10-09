@@ -153,7 +153,9 @@ Before our WordPress website will work we need to populate the database with dat
 11.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
 <img src="images/Click_close.png">
 12.	Click the refresh icon to see it listed in the set of availble schema.
+
 13.	Open the web site.
+
 14.	The website should be up and running.
 
 ## Scale Up Azure Database for MySQL
