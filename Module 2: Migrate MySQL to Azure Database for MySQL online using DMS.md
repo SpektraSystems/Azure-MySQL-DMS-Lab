@@ -127,7 +127,7 @@ To complete all the database objects like table schemas, indexes and stored proc
 <img src="images/new9.jpg"/><br/>
 
 3. You have MySQL sakila sample database in the on-premise system, Use **mysqldump**  command to do schema migration.
-* -h: **onpremvmip** (You can get this ip from dms-dev-vm)
+* -h: **localhost** (You can get this ip from dms-dev-vm)
 * -u: **root**
 * -p: **Password!1234**
 * --databases: **sakila**
