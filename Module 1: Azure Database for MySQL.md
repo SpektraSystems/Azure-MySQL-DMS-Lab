@@ -19,11 +19,11 @@ Azure Database for MySQL provides a fully managed database service for applicati
 8.	In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**.<br/> Please ensure to enter a unique name for storage account name and share name. 
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post3.jpg"/><br/>
 9.	Click **Create Storage**.
-10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use.<br/>
-<img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post4.jpg"/><br/>
+10. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use. Choose **ODL-dms-35976-cloudrg** for existing resource group. 35976 is unique ID and diffent for you. <br/>
+<img src="images/post41.jpg"/><br/>
 
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
-You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
+You may enlarge the shell by dragging the border or clicking on the maximize button on the top right of the shell.
 
 ## Provision MySQL Server
 
@@ -52,13 +52,13 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 ## Deploy the website
 
-We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
+We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which we will deploy in further steps.
 
 
 
-1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
+1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file. Login with the credentials which you received after sign up for the lab.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
-2.	Launch a PowerShell Windows and execute following code. 
+2.	Launch a PowerShell Windows inside **dms-dev-vm** and execute following code. 
 ```
 cd \
 mkdir code 
@@ -73,13 +73,13 @@ git config user.email "<AzureAdUserEmail>"
 ```
 4.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
 5.	Using the file menu choose Open File.
-6.	Open the wp-config.php file at **C:\code\bikeshop\**
+6.	Open the **wp-config.php** file at C:\code\bikeshop\
 7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
 9.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
 10.	On line 51 replace [Servername] with **yourservername**
 11.	**Save** the changes.
-12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open PowerShell prompt.
-13.	Execute this command to set your deployment username and password:
+12.	To deploy this code to the website that has been provisioned you will need to set up  deployment credentials for your user account. To do this, switch back to the open Azure CLI prompt in azure portal.
+13.	Execute this command to set your deployment username and password. Replace user name with globly unique value.
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
@@ -91,7 +91,7 @@ az appservice plan create --resource-group <resource-group-name> --name <appserv
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
-16.	Now we need to configure the local git repository to know about the website. To do this we will add a new remote to the repository:
+16.	Now we need to configure the local git repository to know about the website.  To do this we will add a new remote to the repository. Switch back to the opened powershell inside your dms-dev-vm. Change the username value which you have in step 12 and webapp name which you just created. Also, replace uniquename with webapp name. 
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
