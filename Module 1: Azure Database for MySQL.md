@@ -77,7 +77,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 ## Exercise 3: Deploy the website
 
-We now need to change some connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which has already been provisioned.
+We need to make few changes for connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which we need to create azure web app.
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
@@ -143,7 +143,7 @@ git push website
 
 ## Exercise 4: Configure the connection
 
-Before our WordPress website will work we need to populate the database with data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
+Before our WordPress website is functional we would need to populate the database with the data. To do this, we are going to use The MySQL Workbench to connect to our Azure Database for MySQL that we already have up and running and use a script to restore data into the database.
 
 1.	Open **MySQL Workbench** in your labvm.
 2.	Click **OK** and ignore the unsupported operating system warning.
