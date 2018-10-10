@@ -23,7 +23,9 @@ This hands-on lab will step you through the following:
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/password1.jpg"/><br/>
-4.	Welcome to **Microsoft Azure** portal,Click on Resource groups,You will get two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.
+4.	Welcome to **Microsoft Azure** portal, Click on Resource groups,You will get two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.<br/>
+* ODL_dms_XXXX-cloudrg: ** **
+* ODL_dms_XXXX-Onpremisesrg: **Pre-requisite Environment**
 <img src="images/rg_ss.png"/><br/>
 5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/shell.jpg"/><br/>
@@ -145,8 +147,12 @@ git push website
 ```
 18.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK.
 <img src="images/new13.png"/>
-19.	Wait for the push to the website to complete.</br>
-20.	The website is now updated and just needs data.
+19.	Wait for the push to the website to complete.You will get URL, you need to copy and save for future use.</br>
+```
+For Example: https://mysqlapp.scm.azurewebsites.net
+```
+20. Now Browse the website URL.</br>
+<img src="images/new17.png"/>
 
 ## Exercise 4: Configure the connection
 
@@ -181,7 +187,6 @@ Before our WordPress website is functional we would need to populate the databas
 12.	Click the refresh icon to see it listed in the set of available schema.</br>
 13.	Go to azure portal **Click on resource groups>ODL_dms_XXXX-cloudrg>Open the app service**,that you created in previous exercise. You can see the status of website.</br>
 <img src="images/webapp_status.png">
-14.	Website should be functional.</br>
 
 ## Exercise 5: Scale Up Azure Database for MySQL
 
