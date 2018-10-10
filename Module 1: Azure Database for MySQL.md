@@ -2,7 +2,7 @@
 
 Azure Database for MySQL provides a fully managed database service for application development and deployment allowing you to provision a MySQL database instance in minutes and scale it on the fly. With comprehensive pricing models, and configurable sizing, you get all the features you need such as high-availability, monitoring, security,backup and recovery all with reduced management overhead. These features are built into the service and are aligned to a simple, predictable pricing model.
 
-An Azure Resource Group is a logical container into which Azure resources are deployed and managed. A Resource Group and a Storage Account must exist before any virtual machines can be created. In this example, a resource group already created in the some region. You will need to use resource group name while creating your Database and Server.
+An Azure Resource Group is a logical container into which Azure resources are deployed and managed.In this example, a resource group already created in the some region. You will need to use resource group name while creating your Database and Server.
 
 Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
 
