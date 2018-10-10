@@ -8,7 +8,7 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
 
 ## Scenario Overview
 
-This hands-on lab will step you through the following:
+This hands-on lab will step you through the following exercises:
 
 **Exercise 1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.**<br/>
 **Exercise 2: Provision Azure MySQL server using Azure CLI.**<br/>
@@ -27,7 +27,7 @@ This hands-on lab will step you through the following:
 * ODL_dms_XXXX-cloudrg: **For User Purpose**
 * ODL_dms_XXXX-Onpremisesrg: **Pre-requisite Environment**
 <img src="images/rg_ss.png"/><br/>
-5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
+5.	To launch the **Azure Cloud Shell**, Select the **Cloud Shell** button in the menu options in the dashboard of the Azure portal. By selecting the options it launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/shell.jpg"/><br/>
 6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/post1.jpg"/><br/>
@@ -69,7 +69,7 @@ if you have a sign of exclamation in password etc, put the string in quotes to a
 
 <img src="images/new5.png"/>
 
-3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we're creating here allows all traffic, in production scenarios the rule would be much more restricted.
+3.	By default the database is completely locked down and cannot be accessed, so we need to add a firewall rule to allow us to connect to the database server. The rule we are creating here allows all traffic, in production scenarios the rule would be much more restricted.
 Please ensure to change RG Name and Server Name.
 * --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resourse Group name
 * --server : Give name of your **MySQL server**.
@@ -80,7 +80,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 
 ## Exercise 3: Deploy the website
 
-We need to make few changes for connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we'll deploy it to an Azure App Service which we need to create azure web app.
+We need to make few changes for connection string code for the WordPress website so that it is able to consume data from the database which we have just provisioned. Once we have updated the code we would be able to deploy it to an Azure App Service which we need to create azure web app.
 
 1. Login to **dms-dev-vm** and download **Remote Desktop Connection** file.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/new8.jpg"/><br/>
@@ -91,7 +91,7 @@ mkdir code
 cd code
 git clone https://github.com/gavinbarron/bikeshop.git 
 ```
-3.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt. Please ensure to enter the AAD username you received as a part of lab guide. 
+3.	Next we need to set some git configuration values so that we can push any changes which are made to remote repositories. To do this run the following commands in the command prompt. Please ensure to enter the AAD usernamewhich has been notified as a part of lab guide. 
 ```
 cd bikeshop
 git config user.name  "holuser"
@@ -118,19 +118,19 @@ az webapp deployment user set --user-name "username" --password gitDeployPassw0r
 ```
 Note: Please ensure to enter the publishing username has to be globally unique.
 ```
-13. Execute this command to create app service plan: Please ensure to use existing resource group name.
+13. Execute this command to create app service plan,  Please ensure to use existing resource group name.
 ```
 az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
 ```
 <img src="images/new9.png"/>
 
-14. Execute the command to create web app: Please ensure to use existing resource group name. 
+14. Execute the command to create web app,Please ensure to use existing resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
 <img src="images/new10.png"/>
 
-15. Now Open the new powershell window and need to configure the local git repository to know about the website.You need to ensure,you are running this command in **C:\code\bikeshop** directory. To do this we will add a new remote to the repository.You need to copy this **deploymentLocalGitUrl** from output of web app, that you created in previously step.
+15. Now Open the new powershell window and need to configure the local git repository to know about the website.You would need to ensure,you are running this command in **C:\code\bikeshop** directory. To do this we will add a new remote to the repository.You need to copy this **deploymentLocalGitUrl** from output of web app, that you created in previously step.
 <img src="images/gitdeploymenturl.png"/>
 
 ```
@@ -186,7 +186,7 @@ Before our WordPress website is functional we would need to populate the databas
 11.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
 <img src="images/Click_close.png">
 12.	Click the refresh icon to see it listed in the set of available schema.</br>
-13.	Go to azure portal **Click on resource groups>ODL_dms_XXXX-cloudrg>Open the app service**,that you created in previous exercise. You can see the status of website.</br>
+13.	Go to azure portal **Click on resource groups>ODL_dms_XXXX-cloudrg>Open the app service** that you created in previous exercise. You can see the status of website.</br>
 <img src="images/webapp_status.png">
 
 ## Exercise 5: Scale Up Azure Database for MySQL
