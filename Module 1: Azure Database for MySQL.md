@@ -127,7 +127,9 @@ az webapp create --name <webappname> --resource-group <resource-group-name> --pl
 ```
 <img src="images/new10.png"/>
 
-15. Now Open the new powershell window and need to configure the local git repository to know about the website.You need to ensure,you are running this command in **C:\code\bikeshop** directory. To do this we will add a new remote to the repository:
+15. Now Open the new powershell window and need to configure the local git repository to know about the website.You need to ensure,you are running this command in **C:\code\bikeshop** directory. To do this we will add a new remote to the repository.You need to copy this **deploymentLocalGitUrl** from output of web app, that you created in previously step.
+<img src="images/gitdeploymenturl.png"/>
+
 ```
 git remote add website "https://username@<webappname>.scm.azurewebsites.net/uniquename.git"
 ```
