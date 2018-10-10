@@ -25,7 +25,10 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
 <img src="images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="images/password1.jpg"/><br/>
-4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
+4.	Welcome to **Microsoft Azure** portal, Click on Resource groups,You will get two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.<br/>
+* ODL_dms_XXXX-cloudrg: **For User Purpose**
+* ODL_dms_XXXX-Onpremisesrg: **Pre-requisite Environment**
+<img src="images/rg_ss.png"/><br/>
 5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
 <img src="images/cloud_shell.png"/><br/>
 6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
