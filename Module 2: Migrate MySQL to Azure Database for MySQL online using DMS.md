@@ -174,7 +174,7 @@ Please note that you have already dms instance,which is pre-created for you. It 
 
 ### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
-* Source server name: **localhost**(DNS name of your dms-dev-vm)<br/>
+* Source server name: **DNS name of your dms-dev-vm**<br/>
 * Server Port: **3306**<br/>
 * User name: **root**<br/>
 * Password: **Password!1234**<br/>
