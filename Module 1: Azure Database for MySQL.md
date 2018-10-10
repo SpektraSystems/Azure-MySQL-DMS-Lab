@@ -173,7 +173,7 @@ Before our WordPress website is functional we would need to populate the databas
 <img src="images/Click_close.png">
 12.	Click the refresh icon to see it listed in the set of availble schema.</br>
 13.	Open the web site.</br>
-14.	The website should be up and running.</br>
+14.	Website should be functional.</br>
 
 ## Exercise 5: Scale Up Azure Database for MySQL
 
