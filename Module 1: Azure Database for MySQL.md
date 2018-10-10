@@ -49,7 +49,7 @@ You may enlarge the shell by dragging the border or clicking on the maximize but
 
 2.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL: 
 Please note that you need to provide existing resource groups, which is pre-created for you.You have two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.It should be create in ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
-* --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resourse Group name
+* --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resource Group name
 * --sku-name: **GP_Gen5_8** 
 * --name : Give any unique name for your **MySQL server**
 * --location: **as per your existing resource group**
