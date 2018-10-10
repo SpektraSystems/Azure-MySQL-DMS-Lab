@@ -57,11 +57,11 @@ Please note that you need to provide existing resource groups, which is pre-crea
 Then copy and paste in **Azure Cloud Shell** command line.
 
 ```
-az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password 'mysqlAdminPassw0rd!' --ssl-enforcement Disabled --storage-size 51200
+az mysql server create --resource-group <resource-group-name> --sku-name GP_Gen5_8 --name <server name> --location <location> --admin-user mysqlAdminUser --admin-password 'Password!1234' --ssl-enforcement Disabled --storage-size 51200
 ```
 
 ```
-if you have a sign of exclamation in password etc, put the string in quotes to avoid bash conflict.
+if you have a sign of exclamation in password etc, put the string in quotes to avoid bash conflict.After creating MySQL Server,You have to ensure SSL is disabled. 
 ```
 
 <img src="images/new5.png"/>
@@ -98,7 +98,7 @@ git config user.email "<AzureAdUserEmail>"
 5.	Using the file menu choose Open File.
 6.	Open the wp-config.php file at **C:\code\bikeshop\**
 7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
-8.	On line 47 replace [Password] with **mysqlAdminPassw0rd!**
+8.	On line 47 replace [Password] with **Password!1234**
 9.	On line 51 replace [Servername] with **yourservername**
 10.	**Save** the changes.
 11.	To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.Browse the URL and paste the code there,you will get successfully login in your azure account.
@@ -111,13 +111,17 @@ az login --use-device-code
 ```
 az webapp deployment user set --user-name "username" --password gitDeployPassw0rd!
 ```
-13. Execute this command to create app service plan: Please ensure to use exisitng resource group name.
+
+```
+Note: Please ensure to enter the publishing username has to be globally unique.
+```
+13. Execute this command to create app service plan: Please ensure to use existing resource group name.
 ```
 az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
 ```
 <img src="images/new9.png"/>
 
-14. Execute the command to create web app: Please ensure to use exisitng resource group name. 
+14. Execute the command to create web app: Please ensure to use existing resource group name. 
 ```
 az webapp create --name <webappname> --resource-group <resource-group-name> --plan <appserviceplanname> --deployment-local-git
 ```
