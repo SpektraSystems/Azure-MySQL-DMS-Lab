@@ -24,7 +24,7 @@ This hands-on lab will step you through the following:
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/password1.jpg"/><br/>
 4.	Welcome to **Microsoft Azure** portal, Click on Resource groups,You will get two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.<br/>
-* ODL_dms_XXXX-cloudrg: ** **
+* ODL_dms_XXXX-cloudrg: **For User Purpose**
 * ODL_dms_XXXX-Onpremisesrg: **Pre-requisite Environment**
 <img src="images/rg_ss.png"/><br/>
 5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
@@ -150,7 +150,7 @@ git push website
 19.	Wait for the push to the website to complete.You will get URL, you need to copy and save for future use.</br>
 
 ```
-For Example: https://mysqlapp.scm.azurewebsites.net
+For Example: https://mysqlapp.scm.azurewebsites.net/
 ```
 20. Now Browse the website URL.</br>
 <img src="images/new17.png"/>
