@@ -18,7 +18,7 @@ This hands-on lab will step you through the following:
 
 ## Exercise 1: Create an Azure storage account and initialize Azure Cloud Shell for Azure CLI.
 
-1.  **Navigate** to https://portal.azure.com and login (from the previous step).
+1.  **Navigate** to https://portal.azure.com and login (from the previded credentials).
 2.  **Enter** the **Username** which was displayed in the previous window and **click** on **Next**.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
