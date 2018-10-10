@@ -6,11 +6,6 @@
  ### Lab Overview
 This lab will take you through Azure login and portal experience and the pre-requisite environment.
 
-### Prerequisites
--	Windows or a Mac machine with HTML5 supported browser such as Microsoft Edge, Internet Explorer, Chrome or Firefox
--	Red Hat Customer Portal login credentials so that the Azure instances can be registered with Red Hat Subscription Manager properly, and you must have enough OpenShift Container Platform entitlements to cover the chosen configuration.
-
-
 ### Option 1: Using Preconfigured Environment
 
 ### Time Estimate
