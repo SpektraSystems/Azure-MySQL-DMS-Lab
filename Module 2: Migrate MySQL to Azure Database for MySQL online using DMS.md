@@ -1,6 +1,6 @@
 # Module 2: Migrate MySQL to Azure Database for MySQL online using DMS
 
-You can use the Azure Database Migration Service to migrate the databases from an on-premises MySQL instance to Azure Database for MySQL with minimal downtime. In other words, migration can be achieved with minimum downtime to the application. In this tutorial, you migrate the Employees sample database from an on-premises instance of MySQL 5.7 to Azure Database for MySQL by using an online migration activity in the Azure Database Migration Service.
+You can use the Azure Database Migration Service to migrate the databases from an on-premises MySQL instance to Azure Database for MySQL with minimal downtime. In other words, migration can be achieved with minimum downtime to the application. In this tutorial, you migrate the sakila sample database from an on-premises instance of MySQL 5.7 to Azure Database for MySQL by using an online migration activity in the Azure Database Migration Service.
 
 Throughout this lab, we will use the **Azure Command Line Interface** or **Azure CLI** using the **Cloud Shell** feature in the **Azure Portal**.
 
@@ -133,12 +133,12 @@ To complete all the database objects like table schemas, indexes and stored proc
 * --databases: **sakila**
 
 ```
-mysqldump -h [localhost] -u [username] -p[password] --databases [db name] > [schema file path]
+mysqldump -h [localhost] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 For example:
 
 ```
-mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\DMS\sakila-mv-data.sql
+mysqldump -h localhost -u root -p --databases sakila --no-data > C:\DMS\sakila-mv-data.sql
 ```
 
 4. To import schema to Azure Database for MySQL target, run the following command:
@@ -147,12 +147,12 @@ mysqldump -h 52.167.5.121 -u root -p --databases sakila > C:\DMS\sakila-mv-data.
 * -p: **Password of your MySQLserver**
 * --databases: **sakila**
 ```
-mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
+mysql -h [servername] -u [username] -p[password] [database]< [schema file path]
 ```
 
 For example:
 ```
-mysql.exe -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\DMS\sakila-mv-data.sql
+mysql -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\DMS\sakila-mv-data.sql
 ```
 
 ```
@@ -171,7 +171,7 @@ Please note that you have already dms instance,which is pre-created for you. It 
 
 ### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
-* Source server name: **localhost**<br/>
+* Source server name: **localhost**(DNS name of your dms-dev-vm)<br/>
 * Server Port: **3306**<br/>
 * User name: **root**<br/>
 * Password: **Password!1234**<br/>
