@@ -39,7 +39,7 @@ Throughout this lab, we will use the **Azure Command Line Interface** or **Azure
 <img src="images/post4.jpg"/><br/>
 
    > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
-You may enlarge the shell by dragging the border or clicking on the maximize button on ht etop right of the shell.
+You may enlarge the shell by dragging the border or clicking on the maximize button on the top right of the shell.
 
 ## Exercise 2: Provision Azure MySQL server
 Launch Azure Cloud Shell on the upper right of the Azure portal.
