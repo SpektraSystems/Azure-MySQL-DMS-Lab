@@ -133,7 +133,7 @@ To complete all the database objects like table schemas, indexes and stored proc
 * --databases: **sakila**
 
 ```
-mysqldump -h [servername] -u [username] -p[password] --databases [db name] > [schema file path]
+mysqldump -h [localhost] -u [username] -p[password] --databases [db name] > [schema file path]
 ```
 For example:
 
@@ -171,7 +171,7 @@ Please note that you have already dms instance,which is pre-created for you. It 
 
 ### Specify source details
 1.	On the Add Source Details screen, specify the connection details for the source MySQL instance.You have to add details of your on-prem MySql server.Select Save<br/>
-* Source server name: **your on prem server**<br/>
+* Source server name: **localhost**<br/>
 * Server Port: **3306**<br/>
 * User name: **root**<br/>
 * Password: **Password!1234**<br/>
