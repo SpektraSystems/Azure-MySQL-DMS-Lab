@@ -23,7 +23,8 @@ This hands-on lab will step you through the following:
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/username1.jpg"/><br/>
 3.	In the Stay signed in? pop-up window, click **No**. **Enter** the **Password** and click on **Sign in**.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/password1.jpg"/><br/>
-4.	In the Welcome to **Microsoft Azure** pop-up window, click **Maybe Late**r. Initialize the **Azure CLI**.
+4.	In the Welcome to **Microsoft Azure** pop-up window,You will get two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.
+<img src="images/rg_ss.png"/><br/>
 5.	To launch the **Azure Cloud Shell**, click the **Cloud Shell** button on the menu in the top menu bar of the Azure portal. The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.<br/>
 <img src="https://github.com/SpektraSystems/Azure-PostgreSQL-DMS-Lab/blob/master/images/shell.jpg"/><br/>
 6.	Once the shell launches, you will see **Welcome to Azure Cloud Shell**. Click on the **Bash (Linux)** option at the bottom.<br/>
@@ -177,8 +178,9 @@ Before our WordPress website is functional we would need to populate the databas
 <img src="images/Click_run.png">
 11.	Once the script has been executed the database schema "bikestore" will have been created, click the **Close** button.
 <img src="images/Click_close.png">
-12.	Click the refresh icon to see it listed in the set of availble schema.</br>
-13.	Open the web site.</br>
+12.	Click the refresh icon to see it listed in the set of available schema.</br>
+13.	Go to azure portal **Click on resource groups>ODL_dms_XXXX-cloudrg>Open the app service**,that you created in previous exercise. You can see the status of website.</br>
+<img src="images/webapp_status.png">
 14.	Website should be functional.</br>
 
 ## Exercise 5: Scale Up Azure Database for MySQL
