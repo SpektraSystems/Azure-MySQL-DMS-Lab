@@ -148,6 +148,7 @@ git push website
 18.	In the pop-up enter the deployment credentials password, **<copy>gitDeployPassw0rd!</copy>**, that you set previously and click OK.
 <img src="images/new13.png"/>
 19.	Wait for the push to the website to complete.You will get URL, you need to copy and save for future use.</br>
+
 ```
 For Example: https://mysqlapp.scm.azurewebsites.net
 ```
