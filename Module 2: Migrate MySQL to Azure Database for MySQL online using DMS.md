@@ -179,7 +179,7 @@ Please note that you have already dms instance,which is pre-created for you. It 
 * User name: **root**<br/>
 * Password: **Password!1234**<br/>
 
- <img src="images/10_source.png"/><br/>
+ <img src="images/source_server.png"/><br/>
  
 ### Specify target details
 1.On the Target details screen, specify the connection details for the target Azure Database for MySQL server, which is the pre-provisioned instance of Azure Database for MySQL to which the Sakila schema was deployed by using mysqldump.<br/>
