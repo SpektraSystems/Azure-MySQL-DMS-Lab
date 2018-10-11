@@ -49,7 +49,7 @@ Launch Azure Cloud Shell on the upper right of the Azure portal.
 
 <img src="images/cloud_shell.png"/>
 
-2.	You will now use the CLI to provision an Azure Database for MySQL. In the open PowerShell prompt, use the following command to provision an new Azure Database for MySQL: 
+2.	You will now use the CLI to provision an Azure Database for MySQL. Use the following command to provision an new Azure Database for MySQL: 
 Please note that you need to provide existing resource groups, which is pre-created for you.You have two pre-created resource groups:ODL_dms_XXXX-cloudrg and ODL_dms_XXXX-Onpremisesrg.It should be create in ODL_dms_XXXX-cloudrg. Server name will have to be a unique name across azure MySQL databases. Choose location as the same location where your resource group is located. 
 * --resource-group : Give your **ODL_dms_XXXX-cloudrg** Resourse Group name
 * --sku-name: **GP_Gen5_8** 
