@@ -195,17 +195,21 @@ If the target database contains the same database name as the source database, t
  <img src="images/13_Runnow.png"/><br/>
 
 The migration activity window appears, and the Status of the activity is initializing.
+<img src="images/initializing_state.png"/><br/>
 
 ## Exercise 6: Monitor the migration
 1.	On the migration activity screen, select Refresh to update the display until the Status of the migration shows as Running.<br/>
  <img src="images/sakila_status.png"/><br/>
 2.	Under Database Name, select specific database to get to the migration status for Full data load and Incremental data sync operations.
 Full data load will show the initial load migration status while Incremental data sync will show change data capture (CDC) status.
+<img src="images/migration-cutover.png"/><br/>
  
 ## Exercise 7: Perform migration cutover
 After the initial Full load is completed, the databases are marked Ready to cutover.
 1.	When you're ready to complete the database migration, select Start Cutover.
- <img src="images/sakila_cutover.png"/><br/>
+ <img src="images/start_cutover.png"/><br/>
 2.	Make sure to stop all the incoming transactions to the source database; wait until the Pending changes counter shows 0.
 3.	Select Confirm, and the select Apply.
 4.	When the database migration status shows Completed, connect your applications to the new target Azure SQL Database.
+<img src="images/cutover_status.png"/><br/>
+
