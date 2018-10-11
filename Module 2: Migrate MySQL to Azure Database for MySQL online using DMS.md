@@ -201,7 +201,7 @@ The migration activity window appears, and the Status of the activity is initial
 1.	On the migration activity screen, select Refresh to update the display until the Status of the migration shows as Running.<br/>
  <img src="images/sakila_status.png"/><br/>
 2.	Under Database Name, select specific database to get to the migration status for Full data load and Incremental data sync operations.
-Full data load will show the initial load migration status while Incremental data sync will show change data capture (CDC) status.
+Full data load will show the initial load migration status.
 <img src="images/migration-cutover.png"/><br/>
  
 ## Exercise 7: Perform migration cutover
