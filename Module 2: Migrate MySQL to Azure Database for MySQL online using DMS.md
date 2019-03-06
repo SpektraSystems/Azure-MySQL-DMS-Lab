@@ -80,7 +80,7 @@ az mysql server firewall-rule create --resource-group <resource-group-name> --se
 To connect to your database server, you need the full server name and admin sign-in credentials.If you didn't, you can easily find the server name and sign-in information from the server Overview page or the Properties page in the Azure portal.
 To find these values, take the following steps:
 1.	Open your server's Overview page. Make a note of the Server name and Server admin login name.
-2.	Hover your cursor over each field, and the copy icon appears to the right of the text. Select the copy icon as needed to copy the values.
+2.	However your cursor over each field, and the copy icon appears to the right of the text. Select the copy icon as needed to copy the values.
 
 For example, the server name is mydemoserver.mysql.database.azure.com, and the server admin sign-in is myadmin@mydemoserver.
 
@@ -155,7 +155,7 @@ mysql -h [servername] -u [username] -p[password] [database]< [schema file path]
 
 For example:
 ```
-mysql -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila > C:\DMS\sakila-mv-data.sql
+mysql -h mydemoservernm.mysql.database.azure.com -u myadmin@mydemoservernm -p sakila < C:\DMS\sakila-mv-data.sql
 ```
 
 ```
