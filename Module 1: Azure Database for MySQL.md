@@ -104,7 +104,11 @@ git config user.email "<AzureAdUserEmail>"
 8.	On line 47 replace [Password] with **Password!1234**
 9.	On line 51 replace [Servername] with **yourservername**
 10.	**Save** the changes.
-11.	To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.Browse the URL and paste the code there,you will get successfully login in your azure account.
+>If you get a pop-up saying **Retry as Admin** then select the option as shown below:
+
+ ![](images/saveasadmin.png)
+ 
+11. To deploy this code to the website, you will need to Login in your azure account to set up  deployment credentials for your user account and deploy web app. To do this, switch back to the open PowerShell prompt.Excecute the command to login in azure portal.Browse the URL and paste the code there,you will get successfully login in your azure account.
 ```
 az login --use-device-code
 ```
