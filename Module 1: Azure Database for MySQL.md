@@ -100,7 +100,7 @@ git config user.email "<AzureAdUserEmail>"
 4.	Now we need to update the code to use the MySQL databse which was previously provisioned. To do this, Open **Visual Studio Code**.
 5.	Using the file menu choose Open File.
 6.	Open the wp-config.php file at **C:\code\bikeshop\**
-7.	On line 44 replace [Username] with **mysqlAdminUser@mysql** with your mysql username
+7.	On line 44 replace [Username] with **mysqlAdminUser@yourservername**. Make sure to give your servername in mysqlAdminUser@yourservername
 8.	On line 47 replace [Password] with **Password!1234**
 9.	On line 51 replace [Servername] with **yourservername**
 10.	**Save** the changes.
@@ -122,9 +122,9 @@ az webapp deployment user set --user-name "username" --password gitDeployPassw0r
 ```
 Note: Please ensure to enter the publishing username has to be globally unique.
 ```
-13. Execute this command to create app service plan,  Please ensure to use existing resource group name.
+13. Execute this command to create app service plan,  Please ensure to use existing resource group name and location of that resource group.
 ```
-az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1
+az appservice plan create --resource-group <resource-group-name> --name <appserviceplanname> --sku s1 -- location eastus
 ```
 <img src="images/new9.png"/>
 
@@ -216,7 +216,7 @@ az mysql server list
 2.	The cli will provide a list of your MySQL databases, there should only be one. Note the resourceGroup and name values 
 3.	On the command prompt, run below command to scale up to 2 vCore and 70 GB of Storage
 ```
-az mysql server update --resource-group <resource-group-name> --name <server name> --storage-size 71680
+az mysql server update --resource-group <resource-group-name> --name <server name> --storage-size 71680 --sku-name GP_Gen5_2
 ```
 <img src="images/new16.png"/>
 
